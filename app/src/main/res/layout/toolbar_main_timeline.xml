@@ -6,7 +6,9 @@
     <RelativeLayout
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:id="@+id/leftRelative">
+        android:id="@+id/leftRelative"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
         <ImageView
             android:id="@+id/searchtool"
             android:layout_width="wrap_content"
@@ -23,8 +25,8 @@
             android:layout_marginTop="2dp"
             android:hint="검색"
             android:singleLine="true"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
             android:textCursorDrawable="@drawable/my_cursor_drawable"
             android:cursorVisible="true"
             android:textColorHighlight="@android:color/transparent"

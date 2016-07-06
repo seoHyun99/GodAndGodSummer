@@ -15,9 +15,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.juntcompany.godandgodsummer.Main.MainActivity;
-import com.juntcompany.godandgodsummer.Main.Toolbar.FriendListActivity;
-import com.juntcompany.godandgodsummer.Main.Toolbar.MarkedActivity;
-import com.juntcompany.godandgodsummer.Main.Toolbar.ProfileActivity;
 import com.juntcompany.godandgodsummer.R;
 
 /**
@@ -47,32 +44,29 @@ public class ChattingFragment extends Fragment {
         actionBar.setDisplayShowCustomEnabled(true);
         actionBar.setDisplayShowTitleEnabled(false);
 //        actionBar.set
-        View viewTitle = getActivity().getLayoutInflater().inflate(R.layout.toolbar_main_chatting, null);
-        Button btn = (Button)viewTitle.findViewById(R.id.toolbar_btn_mark);
+        View viewToolbar = getActivity().getLayoutInflater().inflate(R.layout.toolbar_main_chatting, null);
+        Button btn = (Button)viewToolbar.findViewById(R.id.toolbar_btn_mark);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getContext(), MarkedActivity.class);
-                startActivity(intent);
+                ((MainActivity) getActivity()).getToolbarFragment(MainActivity.FRAGMENT_MARKED);
             }
         });
-        btn = (Button)viewTitle.findViewById(R.id.toolbar_btn_friend);
+        btn = (Button)viewToolbar.findViewById(R.id.toolbar_btn_friend);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getContext(), FriendListActivity.class);
-                startActivity(intent);
+                ((MainActivity) getActivity()).getToolbarFragment(MainActivity.FRAGMENT_FRIEND);
             }
         });
-        btn = (Button)viewTitle.findViewById(R.id.toolbar_btn_profile);
+        btn = (Button)viewToolbar.findViewById(R.id.toolbar_btn_profile);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getContext(), ProfileActivity.class);
-                startActivity(intent);
+                ((MainActivity) getActivity()).getToolbarFragment(MainActivity.FRAGMENT_PROFILE);
             }
         });
-        actionBar.setCustomView(viewTitle, new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, Gravity.CENTER));
+        actionBar.setCustomView(viewToolbar, new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, Gravity.CENTER));
 
 //        툴바셋팅
 

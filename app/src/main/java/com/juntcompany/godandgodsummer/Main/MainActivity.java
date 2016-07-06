@@ -4,22 +4,18 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.juntcompany.godandgodsummer.Main.Activity.ActivityLogFragment;
 import com.juntcompany.godandgodsummer.Main.Chatting.ChattingFragment;
 import com.juntcompany.godandgodsummer.Main.TimeLine.TimelineFragment;
+import com.juntcompany.godandgodsummer.Main.Toolbar.FriendManage.FriendManageFragment;
+import com.juntcompany.godandgodsummer.Main.Toolbar.Marked.MarkedFragment;
+import com.juntcompany.godandgodsummer.Main.Toolbar.MyProfile.MyProfileMainFragment;
 import com.juntcompany.godandgodsummer.Main.Video.VideoFragment;
 import com.juntcompany.godandgodsummer.R;
 
@@ -55,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
 //        ActionBar actionBar = getSupportActionBar();
 //        actionBar.setDisplayShowCustomEnabled(true);
 //        actionBar.setDisplayShowTitleEnabled(false);
-
 
         tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.tab_timeline));
@@ -112,6 +107,26 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    public static final String FRAGMENT_MARKED = "marked";
+    public static final String FRAGMENT_FRIEND = "friend";
+    public static final String FRAGMENT_PROFILE = "profile";
+//    탭에 있는 툴바에서 프래그먼트를 띄우기 위해 만듬
+    public void getToolbarFragment(String message){
+
+        if(message.equals(FRAGMENT_MARKED)){
+            f = new MarkedFragment();
+        }else if(message.equals(FRAGMENT_FRIEND)){
+            f = new FriendManageFragment();
+        }else if(message.equals(FRAGMENT_PROFILE)){
+            f= new MyProfileMainFragment();
+        }
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.container, f)
+                .commit();
+    }
+
 
     @Override
     public void onBackPressed() {

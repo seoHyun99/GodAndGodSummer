@@ -8,4 +8,7 @@
     <dimen name="margin_recycler_side">5dp</dimen>
     <!--리스트뷰 양 옆에 마진-->
 
+    <!--폰트 사이즈-->
+    <dimen name="text_toolbar_size">18sp</dimen>
+
 </resources>

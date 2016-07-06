@@ -1,0 +1,188 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.juntcompany.godandgodsummer.Login.SignIn.SignIn9religionFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <android.support.v7.widget.Toolbar
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimaryDark"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="48dp"
+            android:gravity="center"
+            android:text="자신의 종교를 선택해주세요."
+            android:textColor="#000000"
+            android:textSize="23dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TableLayout
+            android:id="@+id/tableLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textView3"
+            android:layout_alignParentLeft="true">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="5dp"
+                android:gravity="center"
+                android:text="선택해주신 종교에 적합한"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="17dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView2"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="3dp"
+                android:gravity="center"
+                android:text="다양한 종교 콘텐츠 등을 제공합니다."
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="17dp"
+                android:textStyle="bold" />
+        </TableLayout>
+
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:id="@+id/tableRow2"
+            android:layout_below="@+id/tableLayout3"
+            android:layout_centerHorizontal="true">
+
+
+            <TableLayout
+                android:layout_width="200dp"
+                android:layout_height="wrap_content">
+
+
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="45dp"
+                    android:layout_margin="10dp"
+                    android:gravity="left|center"
+                    android:id="@+id/Christian"
+                    android:text="기독교"
+                    android:textColor="#000000"
+                    android:textSize="20dp" />
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#9c9c9c" />
+
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="45dp"
+                    android:layout_margin="10dp"
+                    android:gravity="left|center"
+                    android:id="@+id/Catholic"
+                    android:text="천주교"
+                    android:textColor="#000000"
+                    android:textSize="20dp" />
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#9c9c9c" />
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="45dp"
+                    android:layout_margin="10dp"
+                    android:gravity="left|center"
+                    android:id="@+id/Buddhism"
+                    android:text="불교"
+                    android:textColor="#000000"
+                    android:textSize="20dp" />
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#9c9c9c" />
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="45dp"
+                    android:layout_margin="10dp"
+                    android:gravity="left|center"
+                    android:id="@+id/othersReligion"
+                    android:text="기타"
+                    android:textColor="#000000"
+                    android:textSize="20dp" />
+
+
+            </TableLayout>
+
+
+            <RadioGroup
+                android:id="@+id/genderGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/ChristianCheck"
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="10dp" />
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#9c9c9c" />
+
+                <RadioButton
+                    android:id="@+id/CatholicCheck"
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="10dp" />
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#9c9c9c" />
+                <RadioButton
+                    android:id="@+id/BuddhismCheck"
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="10dp" />
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#9c9c9c" />
+                <RadioButton
+                    android:id="@+id/othersReligionCheck"
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="10dp" />
+            </RadioGroup>
+        </TableRow>
+
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

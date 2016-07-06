@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/myProfileBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/myProfileUserPicture"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/profile1" />
+
+        <TextView
+            android:id="@+id/myProfileUserName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/myProfileUserPicture"
+            android:layout_centerHorizontal="true"
+            android:text="GodNGod"
+            android:textColor="#000000"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/myProfileComment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/myProfileUserName"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="5dp"
+            android:text="스타트업 팀빌딩 중이에요. 대전에 있는 개발자 소개 부탁드립니다."
+            android:textAlignment="center"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+
+        <TableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/myProfileComment"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp">
+
+            <TableRow>
+
+                <TableRow>
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/fillheart" />
+
+                    <TextView
+                        android:id="@+id/myProfileReligion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="6dp"
+                        android:gravity="left|center"
+                        android:text="기독교"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+                </TableRow>
+            </TableRow>
+
+            <TableRow>
+
+                <TableRow android:layout_marginTop="5dp">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/star" />
+
+                    <TextView
+                        android:id="@+id/myProfileFavoriteNum"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="6dp"
+                        android:gravity="left|center"
+                        android:text="100만"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:gravity="left|center"
+                        android:text="명이 즐겨찾기로 등록함"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+                </TableRow>
+            </TableRow>
+
+            <TableRow>
+
+                <TableRow
+                    android:id="@+id/goFriendList"
+                    android:layout_marginTop="5dp"
+                    android:onClick="myProfileClick">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/friend" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="6dp"
+                        android:gravity="left|center"
+                        android:text="친구"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/myProfileFriendNum"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:gravity="left|center"
+                        android:text="500"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:gravity="left|center"
+                        android:text="명"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+                </TableRow>
+            </TableRow>
+
+            <TableRow>
+
+                <TableRow>
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/religionhome" />
+
+                    <TextView
+                        android:id="@+id/myProfileReligionHome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="6dp"
+                        android:gravity="left|center"
+                        android:text="대전GodNGod"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+                </TableRow>
+            </TableRow>
+
+            <TableRow>
+
+                <TableRow>
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/mapspoint" />
+
+                    <TextView
+                        android:id="@+id/myProfileCountry"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="6dp"
+                        android:gravity="left|center"
+                        android:text="대전"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+                </TableRow>
+            </TableRow>
+        </TableLayout>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/myProfileChangeIntroduce"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/myProfileBox"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="10dp"
+        android:text="내 소개하기"
+        android:textAlignment="center"
+        android:textColor="#78b0de"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+
+
+
+</RelativeLayout>

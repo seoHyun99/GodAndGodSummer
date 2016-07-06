@@ -33,9 +33,7 @@ public class TimelineHeaderViewHolder extends RecyclerView.ViewHolder {
     TextView textWriteBoard;
     public TimelineHeaderViewHolder(final View itemView) {
         super(itemView);
-        imageView = (ImageView)itemView.findViewById(R.id.profile_image);
-        textWriteBoard = (TextView)itemView.findViewById(R.id.text_Write_Board);
-        textWriteBoard.setOnClickListener(new View.OnClickListener() {
+        itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(mAdapterClickListener!=null){
@@ -44,6 +42,9 @@ public class TimelineHeaderViewHolder extends RecyclerView.ViewHolder {
                 }
             }
         });
+        imageView = (ImageView)itemView.findViewById(R.id.profile_image);
+        textWriteBoard = (TextView)itemView.findViewById(R.id.text_Write_Board);
+
     }
 
     public void setData(MyProfile myProfile){
