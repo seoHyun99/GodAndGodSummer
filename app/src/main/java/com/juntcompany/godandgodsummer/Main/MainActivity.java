@@ -102,7 +102,32 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onTabReselected(TabLayout.Tab tab) {
+            public void onTabReselected(TabLayout.Tab tab) { //툴바에 있는 프래그먼트도 사용하므로 탭이 다시 눌린경우도 고려해야함
+                int position = tab.getPosition();
+                Log.i("tab position", "" + position);
+                switch (position){
+                    case 0: {
+                        f = new TimelineFragment();
+                        break;
+                    }
+                    case 1:{
+                        f= new ChattingFragment();
+                        break;
+                    }
+                    case 2:{
+                        f = new VideoFragment();
+                        break;
+                    }
+                    case 3:{
+                        f = new ActivityLogFragment();
+                        break;
+                    }
+                }
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.container, f)
+                        .commit();
+//                content_main.xml 에 있는 container 에 프래그먼트가 띄워짐
 
             }
         });

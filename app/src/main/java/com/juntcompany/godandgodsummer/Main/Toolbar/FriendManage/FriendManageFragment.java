@@ -2,7 +2,9 @@ package com.juntcompany.godandgodsummer.Main.Toolbar.FriendManage;
 
 
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
@@ -11,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.juntcompany.godandgodsummer.Main.Chatting.ChattingViewPagerAdapter;
 import com.juntcompany.godandgodsummer.Main.MainActivity;
 import com.juntcompany.godandgodsummer.R;
 
@@ -24,7 +27,8 @@ public class FriendManageFragment extends Fragment {
         // Required empty public constructor
     }
 
-
+    TabLayout tabLayout;
+    ViewPager viewPager;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -63,6 +67,19 @@ public class FriendManageFragment extends Fragment {
         });
         actionBar.setCustomView(viewToolbar, new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, Gravity.CENTER));
 ////////////////////        툴바셋팅
+
+//        탭 &&viewpager 세팅
+        tabLayout = (TabLayout)view.findViewById(R.id.tab_layout);
+        viewPager = (ViewPager)view.findViewById(R.id.pager);
+        FriendManageViewPagerAdapter pagerAdapter = new FriendManageViewPagerAdapter(getChildFragmentManager());
+        viewPager.setAdapter(pagerAdapter);
+        tabLayout.setupWithViewPager(viewPager);
+        tabLayout.removeAllTabs();
+
+        tabLayout.addTab(tabLayout.newTab().setText("친구 요청"));
+        tabLayout.addTab(tabLayout.newTab().setText("친구 목록"));
+//        탭 &&viewpager 세팅
+
 
         return view;
     }

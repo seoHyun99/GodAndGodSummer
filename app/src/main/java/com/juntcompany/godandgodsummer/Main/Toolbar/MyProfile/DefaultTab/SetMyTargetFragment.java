@@ -24,6 +24,7 @@ public class SetMyTargetFragment extends Fragment {
 
     public SetMyTargetFragment() {
         // Required empty public constructor
+        setHasOptionsMenu(true);  //꼭 해야 homebutton 이 동작함
     }
 
 

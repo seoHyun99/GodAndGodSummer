@@ -1,0 +1,93 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+
+
+
+    <RelativeLayout android:layout_margin="2dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/friendListFriendPicture"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:onClick="friendInfoClick"
+            android:layout_margin="5dp" />
+
+        <Button
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:background="@drawable/button_delete"
+            android:text="친구 끊기"
+
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/friendListFriendDelete" />
+
+
+
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:text="삭제 되었습니다."
+            android:visibility="invisible"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/deleteMessage"/>
+
+        <TableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:id="@+id/friendListFriendInfo"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/friendListFriendPicture"
+            android:layout_toEndOf="@+id/friendListFriendPicture"
+            android:onClick="friendInfoClick">
+
+
+            <TextView
+                android:id="@+id/friendListFriendName"
+                android:layout_width="match_parent"
+                android:layout_height="19dp"
+                android:layout_marginBottom="2dp"
+                android:layout_marginLeft="4dp"
+                android:gravity="center_vertical"
+                android:text="GnD"
+                android:textColor="#000000"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <TableRow android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/friendListFriendArea"
+                    android:layout_width="match_parent"
+                    android:layout_height="18dp"
+                    android:layout_marginLeft="4dp"
+                    android:gravity="center_vertical"
+                    android:text="지역"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/friendListFriendReligion"
+                    android:layout_width="match_parent"
+                    android:layout_height="18dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginLeft="25dp"
+                    android:gravity="center_vertical"
+                    android:text="종교"
+                    android:textSize="15dp" />
+            </TableRow>
+        </TableLayout>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

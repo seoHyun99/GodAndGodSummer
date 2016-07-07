@@ -11,4 +11,6 @@
     <!--폰트 사이즈-->
     <dimen name="text_toolbar_size">18sp</dimen>
 
+
+    <dimen name="image_square_size">80dp</dimen>
 </resources>

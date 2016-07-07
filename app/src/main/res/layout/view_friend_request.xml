@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp">
+
+        <ImageView
+            android:id="@+id/friendRequestFriendPicture"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/profile5"
+            android:layout_margin="10dp" />
+
+
+        <TableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/friendRequestFriendPicture"
+
+            android:layout_toRightOf="@+id/friendRequestFriendPicture"
+            android:gravity="center_vertical">
+
+
+            <TextView
+                android:id="@+id/text_friend_name"
+                android:layout_width="match_parent"
+                android:layout_height="18dp"
+                android:text="엄준태"
+                android:layout_marginLeft="4dp"
+                android:layout_marginBottom="3dp"
+                android:gravity="center_vertical"
+                android:textColor="#000000"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/friendRequestFriendReligion"
+                android:layout_width="match_parent"
+                android:text="기독교"
+                android:layout_height="18dp"
+                android:layout_marginLeft="4dp"
+                android:gravity="center_vertical"
+                android:textSize="15dp" />
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:gravity="center_vertical">
+
+                <Button
+                    android:id="@+id/requestOk"
+                    android:layout_width="120dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/button_confirm"
+                    android:text="확인"
+                    android:textColor="#FFFFFF" />
+
+                <Button
+                    android:id="@+id/requestDelete"
+                    android:layout_width="120dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/button_delete"
+                    android:text="삭제"
+                    android:textColor="#000000" />
+                <TextView
+                    android:id="@+id/deleteMessage"
+                    android:layout_width="120dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="3dp"
+                    android:visibility="invisible"
+                    android:text="삭제 되었습니다." />
+
+            </TableRow>
+
+        </TableLayout>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

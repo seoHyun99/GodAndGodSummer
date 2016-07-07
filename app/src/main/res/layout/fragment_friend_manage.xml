@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.juntcompany.godandgodsummer.Main.Toolbar.FriendManage.FriendManageFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -16,12 +17,28 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/toolbar">
+        android:layout_below="@id/toolbar">
 
-        <TextView
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tab_layout"
             android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:fillViewport="false"
+            app:tabMinWidth="72dp"
+            app:tabIndicatorColor="@color/colorPrimaryDark"
+            app:tabMode="fixed" />
+
+        <!--프래그먼트가 viewpager 위에 생김-->
+        <android.support.v4.view.ViewPager
+            android:id="@+id/pager"
+            android:layout_below="@+id/tab_layout"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="친구"/>
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
     </RelativeLayout>
 

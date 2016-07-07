@@ -2,8 +2,10 @@ package com.juntcompany.godandgodsummer.Main.TimeLine;
 
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -97,11 +99,24 @@ public class TimelineFragment extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
 //      리사이클러뷰 세팅 끝
+//리프레쉬 레이아웃 세팅
+         refreshLayout = (SwipeRefreshLayout)view.findViewById(R.id.refreshLayout);
+        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                initData();
+            }
+        });
+        refreshLayout.setColorSchemeColors(Color.YELLOW, Color.RED, Color.GREEN);
+//        리프레쉬 레이아웃 세팅 끝
 
         initData();
+        initHeaderData();
 
         return view;
     }
+
+    SwipeRefreshLayout refreshLayout;
 
    private void initData(){
        Log.i("initData", "initData");
@@ -113,9 +128,13 @@ public class TimelineFragment extends Fragment {
            tl.tlReplyCount = 30;
            tl.tlContent = i + "번째";
            timelineAdapter.add(tl);
-       }
-       MyProfile myProfile = new MyProfile();
-        myProfile.myImage = getResources().getDrawable(R.drawable.profile1);
-       timelineAdapter.addHeader(myProfile);
    }
+       refreshLayout.setRefreshing(false);  //데이터가 추가되면 리프레슁을 false 해야함
+
+   }
+    private void initHeaderData(){
+        MyProfile myProfile = new MyProfile();
+        myProfile.myImage = getResources().getDrawable(R.drawable.profile1);
+        timelineAdapter.addHeader(myProfile);
+    }
 }

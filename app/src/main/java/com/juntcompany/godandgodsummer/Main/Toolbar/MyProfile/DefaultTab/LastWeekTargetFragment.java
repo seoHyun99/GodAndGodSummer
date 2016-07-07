@@ -24,6 +24,7 @@ public class LastWeekTargetFragment extends Fragment {
 
     public LastWeekTargetFragment() {
         // Required empty public constructor
+        setHasOptionsMenu(true); //꼭 해야 homebutton 이 동작함
     }
 
 
@@ -57,7 +58,6 @@ public class LastWeekTargetFragment extends Fragment {
         switch (item.getItemId()){
             case android.R.id.home:{
                 getActivity().getSupportFragmentManager().popBackStack();
-                Toast.makeText(getContext(), "ddd", Toast.LENGTH_SHORT).show();
                 return true;
             }
         }

@@ -1,4 +1,4 @@
-package com.juntcompany.godandgodsummer.Main.Chatting.ChattingGroupTab;
+package com.juntcompany.godandgodsummer.Main.Toolbar.FriendManage.ListTab;
 
 
 import android.os.Bundle;
@@ -9,29 +9,29 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.juntcompany.godandgodsummer.Data.GroupRoom;
+import com.juntcompany.godandgodsummer.Data.Friend;
 import com.juntcompany.godandgodsummer.R;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ChattingGroupFragment extends Fragment {
+public class FriendListFragment extends Fragment {
 
 
-    public ChattingGroupFragment() {
+    public FriendListFragment() {
         // Required empty public constructor
     }
 
-
     RecyclerView recyclerView;
-    ChattingGroupAdapter mAdapter;
+    FriendListAdapter mAdapter;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_chatting_group, container, false);
-        recyclerView = (RecyclerView)view.findViewById(R.id.recyclerView);
-        mAdapter = new ChattingGroupAdapter();
+        View view = inflater.inflate(R.layout.fragment_friend_list, container, false);
+
+        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+        mAdapter = new FriendListAdapter();
         recyclerView.setAdapter(mAdapter);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
@@ -42,12 +42,11 @@ public class ChattingGroupFragment extends Fragment {
         return view;
     }
 
-
     private void initData(){
-        for(int i=0; i<4; i++){
-            GroupRoom groupRoom = new GroupRoom();
-            mAdapter.add(groupRoom);
+        for(int i=0; i<5; i++){
+            Friend friend = new Friend();
+            mAdapter.add(friend);
         }
-
     }
+
 }

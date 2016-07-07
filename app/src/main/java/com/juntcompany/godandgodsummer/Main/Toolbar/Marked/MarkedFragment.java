@@ -59,7 +59,7 @@ public class MarkedFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 ((MainActivity) getActivity()).getToolbarFragment(MainActivity.FRAGMENT_PROFILE);
-            }
+        }
         });
         actionBar.setCustomView(viewToolbar, new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, Gravity.CENTER));
 ////////////////////        툴바셋팅

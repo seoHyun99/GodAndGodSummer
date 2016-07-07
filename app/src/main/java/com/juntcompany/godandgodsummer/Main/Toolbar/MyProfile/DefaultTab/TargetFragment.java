@@ -22,6 +22,7 @@ public class TargetFragment extends Fragment {
 
     public TargetFragment() {
         // Required empty public constructor
+
     }
 
 
@@ -53,7 +54,7 @@ public class TargetFragment extends Fragment {
         friendlygraph_text.setText(String.valueOf(friendlygraph_progressbar.getProgress()));
 //               프로필 내용에 들어가는 프로그래스바 및 텍스트 세팅
 
-        Button btn = (Button)view.findViewById(R.id.button_last_target);
+        Button btn = (Button)view.findViewById(R.id.button_last_target); //지난주 목표
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -61,12 +62,12 @@ public class TargetFragment extends Fragment {
                 Log.i("backstack", "backstack count" + count);
                 Fragment f = new LastWeekTargetFragment();
                 FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                ft.replace(R.id.container, f);
+                ft.replace(R.id.container, f); //메인의 container 에 프래그먼트가 대체됨
                 ft.addToBackStack(""+count);
                 ft.commit();
             }
         });
-        btn = (Button)view.findViewById(R.id.button_target_settings);
+        btn = (Button)view.findViewById(R.id.button_target_settings); //목표 설정
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -74,7 +75,7 @@ public class TargetFragment extends Fragment {
                 Log.i("backstack", "backstack count" + count);
                 Fragment f = new SetMyTargetFragment();
                 FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                ft.replace(R.id.container, f);
+                ft.replace(R.id.container, f); //메인의 container 에 프래그먼트가 대체됨
                 ft.addToBackStack(""+count);
                 ft.commit();
             }

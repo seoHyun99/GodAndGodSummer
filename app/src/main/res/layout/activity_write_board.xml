@@ -17,13 +17,63 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/toolbar"
+        android:layout_margin="5dp"
         >
-        <TextView
+        <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="안영"
-            />
+            android:id="@+id/tableLayout">
 
+            <TableRow>
+                <ImageView
+                    android:layout_width="@dimen/image_square_size"
+                    android:layout_height="@dimen/image_square_size"
+                    android:src="@drawable/profile1"
+                    android:layout_marginRight="5dp"
+                    />
+                <TextView />
+                <TableLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/black"
+                        android:id="@+id/text_name"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginBottom="3dp"
+                        android:text="김세종"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/text_day"
+                        android:text="6월 17일"
+                        />
+
+                </TableLayout>
+
+            </TableRow>
+
+
+        </TableLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_menu_edit"
+            android:layout_below="@+id/tableLayout"
+            android:id="@+id/imageView"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edit_content"
+            android:hint="무슨 이야기를 나누고 싶나요?"
+            android:layout_below="@id/tableLayout"
+            android:background="@null"
+            android:layout_toRightOf="@+id/imageView"
+            android:layout_marginTop="3dp"
+            />
 
 
     </RelativeLayout>

@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -12,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.juntcompany.godandgodsummer.Data.ActivityLog;
 import com.juntcompany.godandgodsummer.Main.MainActivity;
 import com.juntcompany.godandgodsummer.R;
 
@@ -26,6 +29,9 @@ public class ActivityLogFragment extends Fragment {
     }
 
 
+
+    RecyclerView recyclerView;
+    ActivityLogAdapter mAdapter;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -65,7 +71,23 @@ public class ActivityLogFragment extends Fragment {
         actionBar.setCustomView(viewToolbar, new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, Gravity.CENTER));
 //        툴바 세팅
 
+        recyclerView = (RecyclerView)view.findViewById(R.id.recyclerView);
+        mAdapter = new ActivityLogAdapter();
+        recyclerView.setAdapter(mAdapter);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+        recyclerView.setLayoutManager(layoutManager);
+
+        initData();
+
         return view;
+    }
+
+    private void initData(){
+        for(int i = 0; i<4; i++){
+            ActivityLog activityLog = new ActivityLog();
+            mAdapter.add(activityLog);
+        }
     }
 
 }
