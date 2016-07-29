@@ -17,9 +17,9 @@ import java.util.List;
 /**
  * Created by EOM on 2016-07-05.
  */
-public class MyProfileAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class MyProfileAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements MyProfileHeaderViewHolder.OnItemSelectClickListener, TimelineViewHolder.OnItemSelectClickListener, TimelineHeaderViewHolder.OnItemClickListener{
 
-    List<MyProfile> header = new ArrayList<MyProfile>();
+    List<MyProfile> header = new ArrayList<MyProfile>(); // 헤더 두개 임
     List<Timeline> items = new ArrayList<Timeline>();
 
     public void add(Timeline timeline) {
@@ -35,6 +35,12 @@ public class MyProfileAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         header.add(myProfile);
         notifyDataSetChanged();
     }
+
+    public void addChangeProfileHeader(MyProfile myProfile){ //이미지가 바뀌면 쓸려고 만듬
+        header.add(0, myProfile);
+        notifyDataSetChanged();
+    }
+
 
 
     public void addAll(List<Timeline> timelines) {
@@ -56,20 +62,21 @@ public class MyProfileAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             case VIEW_TYPE_PROFILE_HEADER: {
                 view = inflater.inflate(R.layout.view_my_profile_header, parent, false);
                 MyProfileHeaderViewHolder holder = new MyProfileHeaderViewHolder(view);
-//                holder.setOnItemClickListener(this);
+                holder.setOnItemClickListener(this);
                 return holder;
             }
             case VIEW_TYPE_HEADER:{
 //                timline 프래그먼트에서 사용한 헤더 재사용
                 view = inflater.inflate(R.layout.view_header_timeline, parent, false);
                 TimelineHeaderViewHolder holder = new TimelineHeaderViewHolder(view);
+                holder.setOnItemClickListener(this);
                 return holder;
             }
             default:
 //                timline 프래그먼트에서 사용한 뷰 재사용
                 view = inflater.inflate(R.layout.view_timeline, parent, false);
                 TimelineViewHolder holder = new TimelineViewHolder(view);
-
+                holder.setOnItemClickListener(this);
                 return holder;
         }
 
@@ -90,6 +97,7 @@ public class MyProfileAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         }
     }
 
+
     @Override
     public int getItemViewType(int position) {
         if (position < 1) {
@@ -104,4 +112,88 @@ public class MyProfileAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     public int getItemCount() {
         return items.size() + 2; // 헤더 포지션 2 더함
     }
+
+    public MyProfile getFirstHeaderItem(int position){
+        if(position ==0){
+            return header.get(position); // 0번 인덱스
+        }
+        return null;
+    }
+
+    /////////////////////////////////////클릭 기능
+
+    public interface OnAdapterItemClickListener{
+        //헤더 프로필 클릭
+        public void onAdapterHeaderProfileCorrectClick(View view, int position);
+        public void onAdapterHeaderProfilePictureClick(View view, int position);
+        public void onAdapterHeaderClick(View view, int position); //타임라인 헤더 클릭
+        //타임라인 안에 클릭
+        public void onAdapterItemLikeClick(View view, int position);
+        public void onAdapterItemViewClick(View view, int position); //타임라인 전체 클릭
+        public void onAdapterItemReportClick(View view, int position);
+        public void onAdapterItemReplyClick(View view, int position);
+        public void onAdapterItemMarkClick(View view, int position);
+    }
+    OnAdapterItemClickListener mAdapterClickListener;
+    public void setOnItemClickListener(OnAdapterItemClickListener listener){
+        mAdapterClickListener = listener;
+    }
+/////헤더 프로필 클릭
+    @Override
+    public void onItemCorrectClick(View view, int position) {
+        if(mAdapterClickListener!=null){
+            mAdapterClickListener.onAdapterHeaderProfileCorrectClick(view, position);
+        }
+    }
+
+    @Override
+    public void onItemPictureClick(View view, int position) {
+        if(mAdapterClickListener!=null){
+            mAdapterClickListener.onAdapterHeaderProfilePictureClick(view, position);
+        }
+    }
+//////헤더 클릭
+    @Override
+    public void onAdapterItemHeaderClick(View view, int position) {
+        if(mAdapterClickListener!=null){
+            mAdapterClickListener.onAdapterHeaderClick(view, position);
+        }
+    }
+
+    @Override
+    public void onItemLikeClick(View view, int position) {
+        if(mAdapterClickListener!=null){
+            mAdapterClickListener.onAdapterItemLikeClick(view, position);
+        }
+    }
+
+    @Override
+    public void onItemClick(View view, int position) {
+        if(mAdapterClickListener!=null){
+            mAdapterClickListener.onAdapterItemViewClick(view, position);
+        }
+    }
+
+    @Override
+    public void onItemReplyClick(View view, int position) {
+        if(mAdapterClickListener!=null){
+            mAdapterClickListener.onAdapterItemReplyClick(view, position);
+        }
+    }
+
+    @Override
+    public void onItemReportClick(View view, int position) {
+        if(mAdapterClickListener!=null){
+            mAdapterClickListener.onAdapterItemReportClick(view, position);
+        }
+    }
+
+    @Override
+    public void onItemMarkClick(View view, int position) {
+        if(mAdapterClickListener!=null){
+            mAdapterClickListener.onAdapterHeaderProfileCorrectClick(view, position);
+        }
+    }
+
+
 }

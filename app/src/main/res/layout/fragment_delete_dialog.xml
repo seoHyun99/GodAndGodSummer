@@ -7,7 +7,7 @@
 
     <!-- TODO: Update blank fragment layout -->
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:background="@color/colorWhite">
@@ -19,6 +19,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:textColor="@android:color/black"
             android:textAlignment="center"
             android:text="내용을 삭제하시나요?" />
@@ -26,6 +27,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:textColor="@android:color/black"
             android:text="뒤로 가면 작성중인 내용이 삭제됩니다"
             />
@@ -33,19 +35,21 @@
     </TableLayout>
 
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/button_cancel"
                 android:layout_below="@id/tableLayout"
                 android:text="취소"
+                android:padding="10dp"
                 android:background="@null"
                 android:layout_toLeftOf="@+id/button_delete"/>
             <Button
                 android:id="@+id/button_delete"
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tableLayout"
                 android:text="삭제"
+                android:padding="10dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:background="@null"
                 android:layout_alignParentRight="true"/>

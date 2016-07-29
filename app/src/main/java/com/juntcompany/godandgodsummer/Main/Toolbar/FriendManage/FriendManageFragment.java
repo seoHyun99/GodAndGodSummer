@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.juntcompany.godandgodsummer.Main.Chatting.ChattingViewPagerAdapter;
 import com.juntcompany.godandgodsummer.Main.MainActivity;
@@ -35,7 +36,7 @@ public class FriendManageFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_friend_manage, container, false);
 
-        //       툴바 셋팅
+//        //       툴바 셋팅
         Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
         MainActivity activity = (MainActivity) getActivity();
         activity.setSupportActionBar(toolbar);
@@ -44,6 +45,13 @@ public class FriendManageFragment extends Fragment {
         actionBar.setDisplayShowTitleEnabled(false);
 //        actionBar.set
         View viewToolbar = getActivity().getLayoutInflater().inflate(R.layout.toolbar_main_timeline, null);
+        final EditText editSearch = (EditText)viewToolbar.findViewById(R.id.edit_search);
+        editSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((MainActivity)getActivity()).getSearchFragment();
+            }
+        });
         Button btn = (Button)viewToolbar.findViewById(R.id.toolbar_btn_mark);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override

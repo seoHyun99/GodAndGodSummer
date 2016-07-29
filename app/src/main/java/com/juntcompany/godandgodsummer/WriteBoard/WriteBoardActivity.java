@@ -1,9 +1,15 @@
 package com.juntcompany.godandgodsummer.WriteBoard;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,12 +17,18 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 
+import com.bumptech.glide.Glide;
 import com.juntcompany.godandgodsummer.Dialog.DeleteDialogFragment;
 import com.juntcompany.godandgodsummer.Main.MainActivity;
+import com.juntcompany.godandgodsummer.Manager.PropertyManager;
 import com.juntcompany.godandgodsummer.R;
 
+import java.io.File;
+
 public class WriteBoardActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,11 +57,45 @@ public class WriteBoardActivity extends AppCompatActivity {
         editContent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                imageView.setVisibility(View.GONE);
+                imageView.setVisibility(View.GONE); // 글쓰는 곳 edittext 클릭하면 옆에 펜모양 없어지기
             }
         });
 
+        ImageView imagePhoto = (ImageView)findViewById(R.id.image_photo);
+        imagePhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // ACTION_GET_CONTENT 드라이버에서 가져오기
+                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                intent.setType("image/*"); //이미지 가져오기 위해 새로운 창 띄우는 기능
+// Always show the chooser (if there are multiple options available)
+                startActivityForResult(intent, PICK_IMAGE_REQUEST);
+            }
+        });
+        ScrollView scrollView = (ScrollView)findViewById(R.id.scrollView);
+        scrollView.setEnabled(false); //이미지가 리사이즈 되어도 안줄어들려면 scrollview 사용 해야함
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.getData() != null) {
+
+            Uri uri = data.getData();
+            Log.i("uri", uri.toString());
+            Cursor c = getContentResolver().query(uri, new String[]{MediaStore.Images.Media.DATA}, null, null, null);
+            if (c.moveToNext()) {
+                String path = c.getString(c.getColumnIndex(MediaStore.Images.Media.DATA));
+//                PropertyManager.getInstance().setProfileImage(path); //이미지를 저장
+                File file = new File(path);
+                Uri fileUri = Uri.fromFile(file);
+                ImageView imagePick = (ImageView)findViewById(R.id.image_pick);
+                Glide.with(getApplicationContext()).load(fileUri).into(imagePick);
+            }
+        }
+    }
+
+    private int PICK_IMAGE_REQUEST = 1;
     private static final String DELETE_DIALOG = "dialog";
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

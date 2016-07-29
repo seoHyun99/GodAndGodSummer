@@ -37,9 +37,10 @@
                <Button
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
+                   android:id="@+id/button_support"
                    android:text="후원 실천 하기"
                    android:textColor="@color/colorWhite"
-                   android:background="@color/colorPrimaryDark"
+                   android:background="@drawable/button_ripple"
                    />
            </LinearLayout>
        </TableRow>
@@ -56,13 +57,22 @@
            android:lines="2"
            android:textAlignment="center"
            android:text="@string/newsTab"/>
+
+       <View
+           android:id="@+id/line"
+           android:layout_width="fill_parent"
+           android:layout_height="1dp"
+           android:layout_marginTop="5dp"
+           android:background="@color/colorGreyHighLight" />
    </TableLayout>
 
-    <RelativeLayout
+    <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/tableLayout"
         android:id="@+id/recyclerView"
+        android:scrollbars="vertical"
+
         />
 
 

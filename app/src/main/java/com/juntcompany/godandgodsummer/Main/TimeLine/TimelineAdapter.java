@@ -111,6 +111,10 @@ public class TimelineAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public interface OnAdapterItemClickListener {
         public void onAdapterHeaderClick(View view, int position);
         public void onAdapterItemLikeClick(View view, int position);
+        public void onAdapterItemViewClick(View view, int position);
+        public void onAdapterItemReportClick(View view, int position);
+        public void onAdapterItemReplyClick(View view, int position);
+        public void onAdapterItemMarkClick(View view, int position);
     }
 
     OnAdapterItemClickListener mAdapterClickListener;
@@ -120,9 +124,37 @@ public class TimelineAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
 //    TimeLineViewHolder 에서 만든 인터페이스 정의
     @Override
-    public void onAdapterItemLikeClick(View view, int position) {
+    public void onItemLikeClick(View view, int position) {
         if(mAdapterClickListener!=null){
             mAdapterClickListener.onAdapterItemLikeClick(view, position);
+        }
+    }
+
+    @Override
+    public void onItemClick(View view, int position) {
+        if(mAdapterClickListener!=null){
+            mAdapterClickListener.onAdapterItemViewClick(view, position);
+        }
+    }
+
+    @Override
+    public void onItemReplyClick(View view, int position) {
+        if(mAdapterClickListener!=null){
+            mAdapterClickListener.onAdapterItemReplyClick(view, position);
+        }
+    }
+
+    @Override
+    public void onItemReportClick(View view, int position) {
+        if(mAdapterClickListener!=null){
+            mAdapterClickListener.onAdapterItemReportClick(view, position);
+        }
+    }
+
+    @Override
+    public void onItemMarkClick(View view, int position) {
+        if(mAdapterClickListener!=null){
+            mAdapterClickListener.onAdapterItemMarkClick(view, position);
         }
     }
 

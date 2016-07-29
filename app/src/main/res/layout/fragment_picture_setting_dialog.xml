@@ -1,0 +1,41 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.juntcompany.godandgodsummer.Dialog.PictureSettingDialogFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:id="@+id/relative_btn_picture"
+        android:background="@color/colorWhite">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/image_test"
+                    android:layout_gravity="center_vertical"
+                    android:src="@android:drawable/ic_menu_camera"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:padding="10dp"
+                    android:background="@null"
+                    android:textColor="@android:color/black"
+                    android:id="@+id/button_reply_correct"
+                    android:textAlignment="center"
+                    android:text="프로필 사진 설정" />
+            </LinearLayout>
+
+
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

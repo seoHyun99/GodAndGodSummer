@@ -74,7 +74,52 @@
             android:layout_toRightOf="@+id/imageView"
             android:layout_marginTop="3dp"
             />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/edit_content"
+            android:id="@+id/scrollView">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/image_pick"
+                android:adjustViewBounds="true"
+
+                />
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp" />
+
+            </LinearLayout>
+        </ScrollView>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite"
+            android:layout_alignParentBottom="true">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/image_photo"
+                android:src="@android:drawable/ic_menu_camera"
+                />
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/image_what"
+                android:src="@android:drawable/ic_menu_edit"/>
+
+
+        </LinearLayout>
 
     </RelativeLayout>
 

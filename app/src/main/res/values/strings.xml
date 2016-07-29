@@ -44,4 +44,7 @@
     교회 소식 및 집회, 알리고 싶은 사욕이 있다면 GodnGod으로 연락주세요.
 </string>
 
+
+    <string name="error_player">There was an error initializing the YouTubePlayer (%1$s)</string>
+
 </resources>

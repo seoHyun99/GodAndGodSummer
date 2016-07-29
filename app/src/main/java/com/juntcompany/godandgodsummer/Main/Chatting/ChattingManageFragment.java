@@ -1,7 +1,6 @@
 package com.juntcompany.godandgodsummer.Main.Chatting;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -13,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.juntcompany.godandgodsummer.Main.MainActivity;
 import com.juntcompany.godandgodsummer.R;
@@ -20,10 +20,10 @@ import com.juntcompany.godandgodsummer.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ChattingFragment extends Fragment {
+public class ChattingManageFragment extends Fragment {
 
 
-    public ChattingFragment() {
+    public ChattingManageFragment() {
         // Required empty public constructor
     }
 
@@ -35,7 +35,7 @@ public class ChattingFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_chatting, container, false);
+        View view = inflater.inflate(R.layout.fragment_chatting_manage, container, false);
         //       툴바 셋팅
         Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
         MainActivity activity = (MainActivity) getActivity();
@@ -44,7 +44,14 @@ public class ChattingFragment extends Fragment {
         actionBar.setDisplayShowCustomEnabled(true);
         actionBar.setDisplayShowTitleEnabled(false);
 //        actionBar.set
-        View viewToolbar = getActivity().getLayoutInflater().inflate(R.layout.toolbar_main_chatting, null);
+        View viewToolbar = getActivity().getLayoutInflater().inflate(R.layout.toolbar_main_timeline, null);
+        final EditText editSearch = (EditText)viewToolbar.findViewById(R.id.edit_search);
+        editSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((MainActivity)getActivity()).getSearchFragment();
+            }
+        });
         Button btn = (Button)viewToolbar.findViewById(R.id.toolbar_btn_mark);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override

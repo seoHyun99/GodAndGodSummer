@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.juntcompany.godandgodsummer.Data.ActivityLog;
 import com.juntcompany.godandgodsummer.Main.MainActivity;
@@ -46,7 +47,16 @@ public class ActivityLogFragment extends Fragment {
         actionBar.setDisplayShowCustomEnabled(true);
         actionBar.setDisplayShowTitleEnabled(false);
 //        actionBar.set
-        View viewToolbar = getActivity().getLayoutInflater().inflate(R.layout.toolbar_main_activitylog, null);
+        View viewToolbar = getActivity().getLayoutInflater().inflate(R.layout.toolbar_main_timeline, null);
+        final EditText editSearch = (EditText)viewToolbar.findViewById(R.id.edit_search);
+        editSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                ((MainActivity)getActivity()).getSearchFragment();
+
+            }
+        });
         Button btn = (Button)viewToolbar.findViewById(R.id.toolbar_btn_mark);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,7 +79,7 @@ public class ActivityLogFragment extends Fragment {
             }
         });
         actionBar.setCustomView(viewToolbar, new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, Gravity.CENTER));
-//        툴바 세팅
+////        툴바 세팅
 
         recyclerView = (RecyclerView)view.findViewById(R.id.recyclerView);
         mAdapter = new ActivityLogAdapter();

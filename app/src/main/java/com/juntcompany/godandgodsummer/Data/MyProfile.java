@@ -2,6 +2,7 @@ package com.juntcompany.godandgodsummer.Data;
 
 import android.graphics.drawable.Drawable;
 import android.hardware.camera2.params.StreamConfigurationMap;
+import android.net.Uri;
 
 import com.juntcompany.godandgodsummer.R;
 
@@ -11,5 +12,7 @@ import com.juntcompany.godandgodsummer.R;
 public class MyProfile {
 //    public int myImage[] = {R.drawable.profile1};
     public String test;
-    public Drawable myImage;
+    public String myImage;
+    public Drawable myImage2;
+
 }

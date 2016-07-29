@@ -19,7 +19,7 @@ public class TimelineHeaderViewHolder extends RecyclerView.ViewHolder {
     //    버튼에 리스너 달기 위해 interface 필요
     public interface OnItemClickListener {
         public void onAdapterItemHeaderClick(View view, int position);
-//    이 인터페이스를 implement 하는 곳에서는 onAdapterItemLikeClick 를 재정의 해야함
+//    이 인터페이스를 implement 하는 곳에서는 재정의 해야함
     }
     OnItemClickListener mAdapterClickListener;  // 위 인터페이스 객체
     //    holer.setOnItemclickListener 로 쓰임
@@ -48,7 +48,7 @@ public class TimelineHeaderViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void setData(MyProfile myProfile){
-        imageView.setImageDrawable(myProfile.myImage);
+//        imageView.setImageDrawable(myProfile.myImage);
     }
 
 

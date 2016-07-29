@@ -11,6 +11,7 @@
         <!--<item name="windowActionBar">false</item>-->
         <!--<item name="windowNoTitle">true</item>-->
         <!--<item name="android:editTextStyle">@style/myEditText</item>-->
+        <item name="android:selectableItemBackground">@drawable/button_ripple</item>
     </style>
 
     <style name="AppTheme.NoActionBar">

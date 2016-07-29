@@ -11,7 +11,8 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.juntcompany.godandgodsummer.Main.Activity.ActivityLogFragment;
-import com.juntcompany.godandgodsummer.Main.Chatting.ChattingFragment;
+import com.juntcompany.godandgodsummer.Main.Chatting.ChattingManageFragment;
+import com.juntcompany.godandgodsummer.Main.Toolbar.Search.SearchFragment;
 import com.juntcompany.godandgodsummer.Main.TimeLine.TimelineFragment;
 import com.juntcompany.godandgodsummer.Main.Toolbar.FriendManage.FriendManageFragment;
 import com.juntcompany.godandgodsummer.Main.Toolbar.Marked.MarkedFragment;
@@ -45,12 +46,47 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+//
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//
 //        setSupportActionBar(toolbar);
-//        // Get the ActionBar here to configure the way it behaves.
-//        ActionBar actionBar = getSupportActionBar();
+//final         ActionBar actionBar = getSupportActionBar();
 //        actionBar.setDisplayShowCustomEnabled(true);
 //        actionBar.setDisplayShowTitleEnabled(false);
+////        actionBar.set
+//        View viewToolbar = getLayoutInflater().inflate(R.layout.toolbar_main_timeline, null);
+//        EditText editSearch = (EditText)viewToolbar.findViewById(R.id.edit_search);
+//        editSearch.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                actionBar.setDisplayHomeAsUpEnabled(true);
+//                actionBar.setHomeAsUpIndicator(R.drawable.button_back);
+//            }
+//        });
+//        Button btn = (Button)viewToolbar.findViewById(R.id.toolbar_btn_mark);
+//        btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                getToolbarFragment(MainActivity.FRAGMENT_MARKED);
+//            }
+//        });
+//        btn = (Button)viewToolbar.findViewById(R.id.toolbar_btn_friend);
+//        btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                getToolbarFragment(FRAGMENT_FRIEND);
+//            }
+//        });
+//        btn = (Button)viewToolbar.findViewById(R.id.toolbar_btn_profile);
+//        btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                getToolbarFragment(FRAGMENT_PROFILE);
+//            }
+//        });
+//        actionBar.setCustomView(viewToolbar, new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, Gravity.CENTER));
+////        툴바 세팅
+
 
         tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.tab_timeline));
@@ -77,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     }
                     case 1:{
-                        f= new ChattingFragment();
+                        f= new ChattingManageFragment();
                         break;
                     }
                     case 2:{
@@ -111,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     }
                     case 1:{
-                        f= new ChattingFragment();
+                        f= new ChattingManageFragment();
                         break;
                     }
                     case 2:{
@@ -131,12 +167,14 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+
     }
 
     public static final String FRAGMENT_MARKED = "marked";
     public static final String FRAGMENT_FRIEND = "friend";
     public static final String FRAGMENT_PROFILE = "profile";
-//    탭에 있는 툴바에서 프래그먼트를 띄우기 위해 만듬
+//    탭에 있는 툴바에서 프래그먼트를 띄우기 위해 만듬, 프래그 먼트용 메소드
     public void getToolbarFragment(String message){
 
         if(message.equals(FRAGMENT_MARKED)){
@@ -149,6 +187,15 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.container, f)
+                .commit();
+    }
+
+    public void getSearchFragment(){
+        Fragment f = new SearchFragment();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.container,f)
+                .addToBackStack(null)
                 .commit();
     }
 
@@ -165,25 +212,5 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    //    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.menu_main, menu);
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
-//
-//        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-//
-//        return super.onOptionsItemSelected(item);
-//    }
+
 }

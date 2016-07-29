@@ -4,6 +4,7 @@ package com.juntcompany.godandgodsummer.Main.Toolbar.MyProfile.DefaultTab;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.juntcompany.godandgodsummer.Main.MainActivity;
 import com.juntcompany.godandgodsummer.R;
 
 /**
@@ -58,6 +60,7 @@ public class TargetFragment extends Fragment {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 int count = getActivity().getSupportFragmentManager().getBackStackEntryCount();
                 Log.i("backstack", "backstack count" + count);
                 Fragment f = new LastWeekTargetFragment();
@@ -71,6 +74,7 @@ public class TargetFragment extends Fragment {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 int count = getActivity().getSupportFragmentManager().getBackStackEntryCount();
                 Log.i("backstack", "backstack count" + count);
                 Fragment f = new SetMyTargetFragment();

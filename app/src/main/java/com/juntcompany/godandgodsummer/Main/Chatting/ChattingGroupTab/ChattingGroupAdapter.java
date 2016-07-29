@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Created by EOM on 2016-07-07.
  */
-public class ChattingGroupAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+public class ChattingGroupAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements ChattingGroupHeaderViewHolder.OnItemSelectClickListener, ChattingGroupViewHolder.OnItemSelectClickListener{
 
     List<String> header = new ArrayList<String>();
     List<GroupRoom> items = new ArrayList<GroupRoom>();
@@ -50,12 +50,13 @@ public class ChattingGroupAdapter extends RecyclerView.Adapter<RecyclerView.View
             case VIEW_TYPE_ITEM:{
                 view = inflater.inflate(R.layout.view_chatting_group_item, parent, false);
                 ChattingGroupViewHolder holder = new ChattingGroupViewHolder(view);
-
+                holder.setOnItemClickListener(this);
                 return holder;
             }
             default:{
                 view = inflater.inflate(R.layout.view_chatting_group_header, parent, false);
                 ChattingGroupHeaderViewHolder holder = new ChattingGroupHeaderViewHolder(view);
+                holder.setOnItemClickListener(this);
                 return holder;
             }
         }
@@ -75,5 +76,35 @@ public class ChattingGroupAdapter extends RecyclerView.Adapter<RecyclerView.View
     @Override
     public int getItemCount() {
         return items.size() + 1;
+    }
+
+
+
+
+    ///////////////////////////클릭 기능
+
+    public interface OnAdapterItemClickListener{
+        public void onAdapterHeaderMakeGroupClick(View view, int position);
+        public void onAdapterItemSettingClick(View view, int position);
+    }
+    OnAdapterItemClickListener mAdapterClickListener;
+    public void setOnItemClickListener(OnAdapterItemClickListener listener){
+        mAdapterClickListener = listener;
+    }
+
+    //////////헤더 클릭
+    @Override
+    public void onItemGroupButtonClickListener(View view, int position) {
+        if(mAdapterClickListener!=null){
+            mAdapterClickListener.onAdapterHeaderMakeGroupClick(view, position);
+        }
+    }
+
+/////아이템 클릭
+    @Override
+    public void onItemSettingClick(View view, int position) {
+        if(mAdapterClickListener!=null){
+            mAdapterClickListener.onAdapterItemSettingClick(view, position);
+        }
     }
 }

@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
+import com.juntcompany.godandgodsummer.Data.SectionHeader;
 import com.juntcompany.godandgodsummer.R;
 
 /**
@@ -19,7 +20,7 @@ public class FriendRequestHeaderViewHolder extends RecyclerView.ViewHolder{
 
     }
 
-    public void setData(String headerText){
-        textView.setText(headerText);
+    public void setData(SectionHeader sectionHeader){
+        textView.setText(sectionHeader.sectionName);
     }
 }

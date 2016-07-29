@@ -11,7 +11,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.juntcompany.godandgodsummer.Main.MainActivity;
 import com.juntcompany.godandgodsummer.R;
@@ -35,6 +34,7 @@ public class LastWeekTargetFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_last_week_target, container, false);
 
         //        툴바 세팅
+
         Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
         MainActivity activity = (MainActivity) getActivity();
         activity.setSupportActionBar(toolbar);
@@ -44,7 +44,7 @@ public class LastWeekTargetFragment extends Fragment {
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeAsUpIndicator(R.drawable.button_back);
 //        actionBar.set
-        View viewToolbar = getActivity().getLayoutInflater().inflate(R.layout.toolbar_profile_set_target, null);
+        View viewToolbar = getActivity().getLayoutInflater().inflate(R.layout.toolbar_profile_check, null);
         Button btn = (Button)viewToolbar.findViewById(R.id.button_check);
         btn.setVisibility(View.GONE);
         actionBar.setCustomView(viewToolbar, new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, Gravity.CENTER));
@@ -58,6 +58,7 @@ public class LastWeekTargetFragment extends Fragment {
         switch (item.getItemId()){
             case android.R.id.home:{
                 getActivity().getSupportFragmentManager().popBackStack();
+
                 return true;
             }
         }

@@ -5,6 +5,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/button_make_group"
         android:background="@drawable/button_confirm"
         android:text="그룹 만들기"
         android:textColor="@color/colorWhite"

@@ -16,10 +16,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.juntcompany.godandgodsummer.Data.MyProfile;
 import com.juntcompany.godandgodsummer.Data.Timeline;
+import com.juntcompany.godandgodsummer.Dialog.ReportDialogFragment;
+import com.juntcompany.godandgodsummer.Dialog.WriteReply.WriteReplyFragment;
 import com.juntcompany.godandgodsummer.Main.MainActivity;
+
 import com.juntcompany.godandgodsummer.R;
 import com.juntcompany.godandgodsummer.WriteBoard.WriteBoardActivity;
 
@@ -36,8 +42,9 @@ public class TimelineFragment extends Fragment {
 
     RecyclerView recyclerView;
     TimelineAdapter timelineAdapter;
+    private static final String REPLY_DIALOG = "dialog";
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_timeline, container, false);
@@ -45,11 +52,21 @@ public class TimelineFragment extends Fragment {
         Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
         MainActivity  activity = (MainActivity) getActivity();
         activity.setSupportActionBar(toolbar);
-        ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
+        final ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
         actionBar.setDisplayShowCustomEnabled(true);
         actionBar.setDisplayShowTitleEnabled(false);
 //        actionBar.set
         View viewToolbar = getActivity().getLayoutInflater().inflate(R.layout.toolbar_main_timeline, null);
+        final EditText editSearch = (EditText)viewToolbar.findViewById(R.id.edit_search);
+        editSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                ((MainActivity)getActivity()).getSearchFragment();
+
+            }
+        });
+
         Button btn = (Button)viewToolbar.findViewById(R.id.toolbar_btn_mark);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,12 +103,42 @@ public class TimelineFragment extends Fragment {
 
             @Override
             public void onAdapterItemLikeClick(View view, int position) {
-                Log.i("TimelineFragment" , "onAdapterItemLikeClick");
+                Log.i("TimelineFragment" , "onItemLickClick");
                 Timeline timeline = timelineAdapter.getItem(position);
 
                 timeline.tlLikeCount +=1;
                 timelineAdapter.add(timeline);
 
+            }
+
+            @Override
+            public void onAdapterItemViewClick(View view, int position) {
+                Toast.makeText(getContext(), "전체 클릭", Toast.LENGTH_SHORT).show();
+                WriteReplyFragment df = new WriteReplyFragment();
+                df.show(getFragmentManager(), REPLY_DIALOG);
+            }
+
+            @Override
+            public void onAdapterItemReportClick(View view, int position) {
+                Toast.makeText(getContext(), "신고 버튼 클릭", Toast.LENGTH_SHORT).show();
+                ReportDialogFragment df = new ReportDialogFragment();
+                df.show(getFragmentManager(), REPLY_DIALOG);
+            }
+
+            @Override
+            public void onAdapterItemReplyClick(View view, int position) {
+                Toast.makeText(getContext(), "댓글 버튼 클릭", Toast.LENGTH_SHORT).show();
+                WriteReplyFragment df = new WriteReplyFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString(ReportDialogFragment.REPLY_MESSAGE, "reply");
+                df.setArguments(bundle);
+                df.show(getFragmentManager(), REPLY_DIALOG);
+
+            }
+
+            @Override
+            public void onAdapterItemMarkClick(View view, int position) {
+                Toast.makeText(getContext(), "마크 버튼 클릭", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -134,7 +181,8 @@ public class TimelineFragment extends Fragment {
    }
     private void initHeaderData(){
         MyProfile myProfile = new MyProfile();
-        myProfile.myImage = getResources().getDrawable(R.drawable.profile1);
+
+        myProfile.myImage2 = getResources().getDrawable(R.drawable.profile1);
         timelineAdapter.addHeader(myProfile);
     }
 }

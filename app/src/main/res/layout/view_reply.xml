@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_margin="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:id="@+id/image_video_thumbnail"
+        android:src="@drawable/profile5"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="3dp"
+        android:text="비디오이름"
+        android:id="@+id/text_user_name"
+        android:layout_toRightOf="@+id/image_video_thumbnail"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_reply_content"
+        android:textColor="@color/colorPrimaryDark"
+        android:text="댓글 내용"
+        android:layout_marginLeft="3dp"
+        android:layout_marginBottom="3dp"
+        android:layout_below="@+id/text_user_name"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/image_video_thumbnail"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_reply_time"
+        android:textColor="@color/colorPrimaryDark"
+        android:text="시간"
+        android:layout_marginLeft="3dp"
+        android:layout_marginBottom="3dp"
+        android:layout_alignBottom="@id/image_video_thumbnail"
+        android:layout_toRightOf="@id/image_video_thumbnail"
+        />
+
+
+
+</RelativeLayout>

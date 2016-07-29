@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * Created by EOM on 2016-07-01.
  */
-public class ChattingListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class ChattingListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements ChattingListViewHolder.OnItemSelectClickListener{
     List<Chat> items = new ArrayList<Chat>();
 
     public void add(Chat data){
@@ -34,7 +34,7 @@ public class ChattingListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
        View view = inflater.inflate(R.layout.view_chatting_list, parent, false);
         ChattingListViewHolder holder = new ChattingListViewHolder(view);
-
+        holder.setOnItemClickListener(this);
         return holder;
     }
 
@@ -57,5 +57,22 @@ public class ChattingListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         }
         return items.get(position);
     }
+////////////////////////////////////////클릭 기능
 
+    public interface OnAdapterItemClickListener{
+        public void onAdapterItemViewClick(View view, int position);
+    }
+
+    OnAdapterItemClickListener mAdapterClickListener;
+    public void setOnItemClickListener(OnAdapterItemClickListener listener){
+        mAdapterClickListener = listener;
+    }
+
+    /////////////////// chattinglistviewholer 에서 재정의 한거
+    @Override
+    public void onItemClick(View view, int position) {
+        if(mAdapterClickListener!=null){
+            mAdapterClickListener.onAdapterItemViewClick(view, position);
+        }
+    }
 }

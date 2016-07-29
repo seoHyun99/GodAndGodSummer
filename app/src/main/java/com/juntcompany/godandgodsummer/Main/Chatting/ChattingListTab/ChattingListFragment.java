@@ -1,6 +1,7 @@
 package com.juntcompany.godandgodsummer.Main.Chatting.ChattingListTab;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -8,7 +9,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.juntcompany.godandgodsummer.Chatting.ChattingActivity;
 import com.juntcompany.godandgodsummer.Data.Chat;
 import com.juntcompany.godandgodsummer.R;
 
@@ -31,6 +34,15 @@ public class ChattingListFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_chatting_list, container, false);
         recyclerView = (RecyclerView)view.findViewById(R.id.recyclerView);
         mAdapter = new ChattingListAdapter();
+        mAdapter.setOnItemClickListener(new ChattingListAdapter.OnAdapterItemClickListener() {
+            @Override
+            public void onAdapterItemViewClick(View view, int position) {
+                Chat chat = mAdapter.getItem(position);
+                Toast.makeText(getContext(), chat.friendName , Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getContext(), ChattingActivity.class);
+                startActivity(intent);
+            }
+        });
         recyclerView.setAdapter(mAdapter);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);

@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Created by EOM on 2016-07-06.
  */
-public class FriendListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class FriendListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements FriendListViewHolder.OnItemSelectClickListener{
 
 
     List<Friend> items = new ArrayList<Friend>();
@@ -24,12 +24,15 @@ public class FriendListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         notifyDataSetChanged();
     }
 
-
     public void addAll(List<Friend> friends) {
         items.addAll(friends);
         notifyDataSetChanged();
     }
 
+    public void removeItem(Friend friend){
+        items.remove(friend);
+        notifyDataSetChanged();
+    }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -37,7 +40,7 @@ public class FriendListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         View view = inflater.inflate(R.layout.view_friend_list, parent, false);;
 
         FriendListViewHolder holder = new FriendListViewHolder(view);
-
+        holder.setOnItemClickListener(this);
         return holder;
     }
 
@@ -53,4 +56,27 @@ public class FriendListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         return items.size() ;
     }
 
+    public Friend getItem(int position){
+        if(position<0 || position>= items.size()){
+            return null;
+        }
+        return items.get(position);
+    }
+    ////////////////////////////클릭 기능
+
+    public interface OnAdapterItemClickListener{
+        public void onAdapterItemDeleteClick(View view, int position);
+    }
+
+    OnAdapterItemClickListener mAdapterClickListener;
+    public void setOnItemClickListener(OnAdapterItemClickListener listener){
+        mAdapterClickListener = listener;
+    }
+
+    @Override
+    public void onItemDeleteClick(View view, int position) {
+        if(mAdapterClickListener!=null){
+            mAdapterClickListener.onAdapterItemDeleteClick(view, position);
+        }
+    }
 }

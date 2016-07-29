@@ -2,16 +2,21 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.juntcompany.godandgodsummer">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
+        android:name=".Util.GodAndGod"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/icon2"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
             android:name=".Main.MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".Login.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,7 +28,14 @@
             android:name=".Login.LoginActivity"
             android:theme="@style/Login" />
         <activity android:name=".Login.SignIn.SignInActivity" />
-        <activity android:name=".WriteBoard.WriteBoardActivity"></activity>
+        <activity
+            android:name=".WriteBoard.WriteBoardActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <!-- <activity android:name=".FriendInfo.FriendInfoActivity" /> -->
+        <activity android:name=".Chatting.ChattingActivity" />
+        <activity android:name=".MakeGroup.MakeGroupActivity" />
+        <activity android:name=".Util.YoutubeActivity" />
+        <activity android:name=".Setting.GroupSettingActivity"></activity>
     </application>
 
 </manifest>

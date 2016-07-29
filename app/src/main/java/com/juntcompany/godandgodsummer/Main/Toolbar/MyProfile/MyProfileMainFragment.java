@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.juntcompany.godandgodsummer.Main.MainActivity;
@@ -47,6 +48,13 @@ public class MyProfileMainFragment extends Fragment {
         actionBar.setDisplayShowTitleEnabled(false);
 //        actionBar.set
         View viewToolbar = getActivity().getLayoutInflater().inflate(R.layout.toolbar_main_timeline, null);
+        final EditText editSearch = (EditText)viewToolbar.findViewById(R.id.edit_search);
+        editSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((MainActivity)getActivity()).getSearchFragment();
+            }
+        });
         Button btnToolbar = (Button)viewToolbar.findViewById(R.id.toolbar_btn_mark);
         btnToolbar.setOnClickListener(new View.OnClickListener() {
             @Override

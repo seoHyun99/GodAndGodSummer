@@ -4,7 +4,7 @@
     android:layout_height="match_parent">
 
     <RelativeLayout
-        android:layout_width="250dp"
+        android:layout_width="245dp"
         android:layout_height="wrap_content"
         android:id="@+id/leftRelative"
         android:focusable="true"
@@ -32,6 +32,7 @@
             android:textColorHighlight="@android:color/transparent"
             android:background ="@null"
             android:layout_toRightOf="@+id/searchtool"
+            android:focusable="false"
             />
     <!--#FFFFFF-->
         <View
@@ -44,14 +45,15 @@
             android:background="#FFFFFF" />
     </RelativeLayout>
     <LinearLayout
-        android:layout_width="84dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="4dp"
+        android:layout_alignParentRight="true"
         android:layout_toRightOf="@+id/leftRelative">
         <Button
             android:id="@+id/toolbar_btn_mark"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:layout_marginLeft="4dp"
             android:layout_marginRight="4dp"
             android:background="@drawable/toolbar_timeline_mark"
@@ -60,8 +62,8 @@
 
         <Button
             android:id="@+id/toolbar_btn_friend"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:background="@drawable/toolbar_friend"
             android:layout_marginLeft="4dp"
             android:layout_marginRight="4dp"
@@ -69,8 +71,8 @@
 
         <Button
             android:id="@+id/toolbar_btn_profile"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:background="@drawable/toolbar_myprofile"
             android:layout_marginLeft="4dp"/>
     </LinearLayout>

@@ -46,7 +46,7 @@
 
 
             <TextView
-                android:id="@+id/friendRequestFriendReligion"
+                android:id="@+id/text_friend_religion"
                 android:layout_width="match_parent"
                 android:text="기독교"
                 android:layout_height="18dp"
@@ -61,7 +61,7 @@
                 android:gravity="center_vertical">
 
                 <Button
-                    android:id="@+id/requestOk"
+                    android:id="@+id/button_confirm"
                     android:layout_width="120dp"
                     android:layout_height="40dp"
                     android:layout_marginRight="10dp"
@@ -70,7 +70,7 @@
                     android:textColor="#FFFFFF" />
 
                 <Button
-                    android:id="@+id/requestDelete"
+                    android:id="@+id/button_delete"
                     android:layout_width="120dp"
                     android:layout_height="40dp"
                     android:layout_marginRight="10dp"

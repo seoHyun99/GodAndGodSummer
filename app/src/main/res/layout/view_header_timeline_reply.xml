@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
+
+        <ImageView
+            android:id="@+id/timeline_user_picture"
+            android:layout_width="40dp"
+            android:layout_height="40dp" />
+
+
+        <TextView
+            android:id="@+id/timeline_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="3dp"
+            android:layout_toRightOf="@+id/timeline_user_picture"
+            android:text="글쓴 사람"
+            android:textStyle="bold" />
+
+        <TableRow
+            android:id="@+id/statusTable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/timeline_user_name">
+
+            <ImageView
+                android:id="@+id/timeline_heart"
+                android:layout_width="17dp"
+                android:layout_height="17dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/timeline_heart_checked" />
+            <TextView
+                android:id="@+id/timeline_user_like_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="4"
+                android:textSize="13dp"
+                />
+
+            <ImageView
+                android:id="@+id/timeline_reply"
+                android:layout_width="17dp"
+                android:layout_height="17dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/timeline_reply_checked" />
+            <TextView
+                android:id="@+id/timeline_reply_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="4"
+                android:textSize="13dp"
+                />
+
+            <ImageView
+                android:id="@+id/timeline_mark"
+                android:layout_width="17dp"
+                android:layout_height="17dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/timeline_mark_unchecked" />
+
+        </TableRow>
+
+
+        <Button
+            android:id="@+id/button_report"
+            android:layout_width="80dp"
+            android:layout_height="25dp"
+            android:layout_marginRight="10dp"
+            android:drawableLeft="@drawable/timeline_siren"
+            android:layout_centerVertical="true"
+            android:text="신고"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:textSize="15dp"
+            android:background="@null"
+            android:textAlignment="center"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/timeline_user_picture"
+            android:id="@+id/timeline_content"
+            android:text="안녕 리사이클러"
+            />
+
+        <View
+            android:id="@+id/line"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/timeline_content"
+            android:layout_marginTop="5dp"
+            android:background="#90909090" />
+
+
+
+        <!--<View-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="5dp"-->
+        <!--android:layout_below="@id/likeReplyBox"-->
+        <!--android:background="#90909090" />-->
+
+
+
+    </RelativeLayout>

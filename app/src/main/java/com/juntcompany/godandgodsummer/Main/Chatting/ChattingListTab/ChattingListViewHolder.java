@@ -13,6 +13,15 @@ import com.juntcompany.godandgodsummer.R;
  */
 public class ChattingListViewHolder extends RecyclerView.ViewHolder {
 
+    public interface OnItemSelectClickListener{
+        public void onItemClick(View view, int position);
+    }
+
+    OnItemSelectClickListener mItemClickListener;
+    public void setOnItemClickListener(OnItemSelectClickListener listener){
+        mItemClickListener = listener;
+    }
+
     ImageView chatFriendPicture;
     TextView chatFriendName;
     TextView chatLastSpeak;
@@ -20,6 +29,14 @@ public class ChattingListViewHolder extends RecyclerView.ViewHolder {
 
     public ChattingListViewHolder(View itemView) {
         super(itemView);
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(mItemClickListener!=null){
+                    mItemClickListener.onItemClick(view, getAdapterPosition());
+                }
+            }
+        });
         chatFriendPicture = (ImageView)itemView.findViewById(R.id.image_video_thumbnail);
         chatFriendName = (TextView)itemView.findViewById(R.id.text_video_name);
         chatLastSpeak = (TextView)itemView.findViewById(R.id.text_last_speak);
