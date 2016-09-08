@@ -29,7 +29,7 @@ public class ReportDialogFragment extends DialogFragment {
         setStyle(DialogFragment.STYLE_NO_TITLE, R.style.MyDialog);
     }
 
-    public final static String REPLY_MESSAGE = "message";
+    public final static String REPORT_MESSAGE = "message";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

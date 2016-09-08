@@ -26,7 +26,9 @@ public class Message {
         return mUsername;
     };
 
-
+    public Message(){
+        //디폴트 생성자는 firebase를 사용하려면 꼭 필요
+    }
 
     public static class Builder{
         private final int mType;

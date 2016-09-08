@@ -30,6 +30,7 @@ public class SignIn5EmailFragment extends Fragment {
         // Required empty public constructor
     }
 
+    EditText editEmail;
     private static final String Title= "이메일 주소 입력";
     public static final String USER_MESSAGE = "user_message";
     @Override
@@ -60,7 +61,7 @@ public class SignIn5EmailFragment extends Fragment {
                 //        프래그먼트 세팅
                 User user = (User)getArguments().getSerializable(SignIn5EmailFragment.USER_MESSAGE);
 //               bundle 값 가져오기
-                user.email = "kiss9815@naver.com";
+                user.email = editEmail.getText().toString(); // 이메일 값 가져오기
 //                Toast.makeText(getContext(), user.phoneNumber + user.email, Toast.LENGTH_SHORT).show();
                 Bundle bundle = new Bundle();
                 bundle.putSerializable(SignIn6NicknameFragment.USER_MESSAGE, user);
@@ -79,8 +80,8 @@ public class SignIn5EmailFragment extends Fragment {
         });
         actionBar.setCustomView(viewToolbar, new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, Gravity.CENTER));
 
-        final EditText editText = (EditText)view.findViewById(R.id.inputEmail);
-        editText.addTextChangedListener(new TextWatcher() {
+         editEmail = (EditText)view.findViewById(R.id.inputEmail);
+        editEmail.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
@@ -88,7 +89,7 @@ public class SignIn5EmailFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if(editText.getText().toString().contains("@") && editText.getText().toString().contains(".")){
+                if(editEmail.getText().toString().contains("@") && editEmail.getText().toString().contains(".")){
                     btnNext.setVisibility(View.VISIBLE);
                 }else {
                     btnNext.setVisibility(View.GONE);

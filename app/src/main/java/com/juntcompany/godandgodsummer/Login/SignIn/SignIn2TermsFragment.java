@@ -67,15 +67,17 @@ public class SignIn2TermsFragment extends Fragment {
         actionBar.setCustomView(viewToolbar, new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, Gravity.CENTER));
 
 
-         Button btnAgree = (Button)view.findViewById(R.id.button_agree);
-        btnAgree.setOnClickListener(new View.OnClickListener() {
+         final Button btnAgree = (Button)view.findViewById(R.id.button_agree);
+        btnAgree.setOnClickListener(new View.OnClickListener() { //동의 버튼 누르면 툴바에 다음 버튼 활성화
             @Override
             public void onClick(View view) {
-                if(!btnSelected) {
+                if(!btnSelected) { //버튼이 처음 눌리면
                     btnNext.setVisibility(View.VISIBLE);
+                    btnAgree.setBackgroundResource(R.drawable.button_confirm);//초록색 배경
                     btnSelected = true;
                 }else {
                     btnNext.setVisibility(View.GONE);
+                    btnAgree.setBackgroundResource(R.drawable.button_agree);//회색 배경
                     btnSelected =false;
                 }
 

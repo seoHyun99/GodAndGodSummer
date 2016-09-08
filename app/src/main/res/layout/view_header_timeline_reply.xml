@@ -96,6 +96,12 @@
             android:id="@+id/timeline_content"
             android:text="안녕 리사이클러"
             />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/timeline_content"
+            android:id="@+id/timeline_content_photo"
+            />
 
         <View
             android:id="@+id/line"

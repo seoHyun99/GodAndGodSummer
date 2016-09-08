@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.juntcompany.godandgodsummer.Data.User;
 import com.juntcompany.godandgodsummer.R;
@@ -51,10 +50,11 @@ public class SignIn11ConfirmFragment extends Fragment {
         textTitle.setText(Title);
 
         Bundle userBundle = getArguments();
-        User user = (User) userBundle.getSerializable(SignIn11ConfirmFragment.USER_MESSAGE);
-        Toast.makeText(getContext(), "user last"+ user, Toast.LENGTH_SHORT).show();
-        Button btn = (Button) viewToolbar.findViewById(R.id.button_next);
-        btn.setOnClickListener(new View.OnClickListener() {
+        final User user = (User) userBundle.getSerializable(SignIn11ConfirmFragment.USER_MESSAGE); //마지막 user 데이터// 서버에 전송
+        Button btnNext = (Button) viewToolbar.findViewById(R.id.button_next);
+        btnNext.setVisibility(View.VISIBLE);
+        btnNext.setText("완료");
+        btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //        프래그먼트 세팅
@@ -68,10 +68,26 @@ public class SignIn11ConfirmFragment extends Fragment {
                 ft.commit(); //백스택에 해당 프래그먼트가 저장됨
                 //        프래그먼트 세팅
 
-                ((SignInActivity) getActivity()).callSignUpLast();
+                ((SignInActivity) getActivity()).callSignUpLast(user); // user 를 서버에 전송하는 메소드. 액티비티에 있고 마지막으로 콜하는 메소드
             }
         });
         actionBar.setCustomView(viewToolbar, new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, Gravity.CENTER));
+
+        TextView textPhone = (TextView)view.findViewById(R.id.phoneText);
+        TextView textEmail = (TextView)view.findViewById(R.id.emailText);
+        TextView textName = (TextView)view.findViewById(R.id.nickText);
+        TextView textBirth = (TextView)view.findViewById(R.id.birthText);
+        TextView textPassword = (TextView)view.findViewById(R.id.pwText);
+        TextView textReligion = (TextView)view.findViewById(R.id.religionText);
+        TextView textGender = (TextView)view.findViewById(R.id.genderText);
+
+        textPhone.setText(user.phoneNumber);
+        textEmail.setText(user.email);
+        textName.setText(user.name);
+        textBirth.setText(user.birthDay);
+        textPassword.setText(user.password);
+        textReligion.setText(user.religion);
+        textGender.setText(user.gender);
 
         return view;
     }

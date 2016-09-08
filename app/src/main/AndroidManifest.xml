@@ -16,7 +16,9 @@
             android:name=".Main.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="adjustPan" />
+            android:windowSoftInputMode="adjustPan" >
+
+        </activity>
         <activity android:name=".Login.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,7 +29,8 @@
         <activity
             android:name=".Login.LoginActivity"
             android:theme="@style/Login" />
-        <activity android:name=".Login.SignIn.SignInActivity" />
+        <activity android:name=".Login.SignIn.SignInActivity"
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".WriteBoard.WriteBoardActivity"
             android:windowSoftInputMode="adjustResize" />

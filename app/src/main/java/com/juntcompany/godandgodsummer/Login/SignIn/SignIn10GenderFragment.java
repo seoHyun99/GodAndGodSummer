@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.juntcompany.godandgodsummer.Data.User;
@@ -27,6 +28,7 @@ public class SignIn10GenderFragment extends Fragment {
         // Required empty public constructor
     }
 
+    private String genderText;
     private static final String Title= "성별 입력";
     public static final String USER_MESSAGE = "user_message";
     @Override
@@ -48,13 +50,13 @@ public class SignIn10GenderFragment extends Fragment {
         View viewToolbar = getActivity().getLayoutInflater().inflate(R.layout.toolbar_sign_in, null);
         TextView textTitle = (TextView)viewToolbar.findViewById(R.id.text_title);
         textTitle.setText(Title);
-        Button btn = (Button) viewToolbar.findViewById(R.id.button_next);
-        btn.setOnClickListener(new View.OnClickListener() {
+        final Button btnNext = (Button) viewToolbar.findViewById(R.id.button_next);
+        btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //        프래그먼트 세팅
                 User user = (User)getArguments().getSerializable(SignIn10GenderFragment.USER_MESSAGE);
-                user.gender = "남자";
+                user.gender = genderText;
                 Bundle bundle = new Bundle();
                 bundle.putSerializable(SignIn11ConfirmFragment.USER_MESSAGE, user);
 
@@ -71,6 +73,24 @@ public class SignIn10GenderFragment extends Fragment {
             }
         });
         actionBar.setCustomView(viewToolbar, new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, Gravity.CENTER));
+
+        RadioGroup radioGroup = (RadioGroup)view.findViewById(R.id.radioGroup);
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int checkId) {
+                switch (checkId){
+                    case R.id.radio_man:
+                        genderText = "남자";
+                        btnNext.setVisibility(View.VISIBLE);
+                        break;
+
+                    case R.id.radio_woman:
+                        genderText = "여자";
+                        btnNext.setVisibility(View.VISIBLE);
+                        break;
+                }
+            }
+        });
 
         return view;
     }

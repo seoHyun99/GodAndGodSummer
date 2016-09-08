@@ -1,6 +1,8 @@
 package com.juntcompany.godandgodsummer.Main.TimeLine;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -8,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.juntcompany.godandgodsummer.Data.Timeline;
 import com.juntcompany.godandgodsummer.R;
 
@@ -35,11 +38,13 @@ public class TimelineViewHolder extends RecyclerView.ViewHolder{
 
     ImageView tlUserPicture;
     TextView tlContent;
+    ImageView tlContentPhoto;
     TextView tlUserName;
     TextView tlLikeCount;
     TextView tlReplyCount;
     TableRow tableLike;
     TableRow tableReply;
+    Context mContext;
 
     public TimelineViewHolder(final View itemView) {
         super(itemView);
@@ -52,10 +57,12 @@ public class TimelineViewHolder extends RecyclerView.ViewHolder{
                 }
             }
         });
+        mContext = itemView.getContext();
         tlUserPicture = (ImageView)itemView.findViewById(R.id.timeline_user_picture);
         tlUserName = (TextView)itemView.findViewById(R.id.timeline_user_name);
         tlLikeCount = (TextView)itemView.findViewById(R.id.timeline_user_like_num);
         tlContent = (TextView) itemView.findViewById(R.id.timeline_content);
+        tlContentPhoto = (ImageView)itemView.findViewById(R.id.timeline_content_photo);
         tlReplyCount = (TextView)itemView.findViewById(R.id.timeline_reply_count);
         tableLike = (TableRow)itemView.findViewById(R.id.likeBox);
         tableReply = (TableRow)itemView.findViewById(R.id.replyBox);
@@ -98,11 +105,18 @@ public class TimelineViewHolder extends RecyclerView.ViewHolder{
 
 //    실질적으로 데이터가 들어가는 부분
     public void setData(Timeline timeline){
-        tlUserPicture.setImageResource(R.drawable.profile2);
-        tlUserName.setText(timeline.tlUsername);
-        tlLikeCount.setText(""+timeline.tlLikeCount);
-        tlReplyCount.setText(""+timeline.tlReplyCount);
-        tlContent.setText(timeline.tlContent);
+        if(!TextUtils.isEmpty(timeline.userPhoto)){
+            Log.i("userPhoto", "" + (timeline.userPhoto == null));
+            Glide.with(mContext).load(timeline.userPhoto).into(tlUserPicture);
+        }else {
+            Log.i("userPhoto", "" + (timeline.userPhoto == null));
+            tlUserPicture.setImageResource(R.drawable.default_me);
+        }
+        Glide.with(mContext).load(timeline.photo);
+        tlUserName.setText(timeline.username);
+        tlLikeCount.setText(""+timeline.likeCount);
+        tlReplyCount.setText(""+timeline.replyCount);
+        tlContent.setText(timeline.content);
     }
 
 

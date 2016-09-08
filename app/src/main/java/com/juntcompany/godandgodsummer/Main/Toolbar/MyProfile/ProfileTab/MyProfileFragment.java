@@ -105,7 +105,7 @@ public class MyProfileFragment extends Fragment {
 //        헤더를 두개 넣어야 에러 안남
         for(int i =0; i<4; i++){
             Timeline timeline = new Timeline();
-            timeline.tlContent= i + "번째 내용이다";
+            timeline.content= i + "번째 내용이다";
             mAdapter.add(timeline);
         }
     }

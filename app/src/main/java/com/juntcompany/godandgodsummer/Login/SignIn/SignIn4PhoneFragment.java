@@ -29,7 +29,7 @@ public class SignIn4PhoneFragment extends Fragment {
     public SignIn4PhoneFragment() {
         // Required empty public constructor
     }
-
+    EditText editPhone; //휴대전화 값
     private static final String Title= "휴대 전화 입력";
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -56,7 +56,7 @@ public class SignIn4PhoneFragment extends Fragment {
             public void onClick(View view) {
                 //        프래그먼트 세팅
                 User user =new User();
-                user.phoneNumber = "01076225850";
+                user.phoneNumber = editPhone.getText().toString();
                 Bundle bundle = new Bundle();
                 bundle.putSerializable(SignIn5EmailFragment.USER_MESSAGE, user);
 //                보낼 값 세팅
@@ -75,8 +75,8 @@ public class SignIn4PhoneFragment extends Fragment {
 
         actionBar.setCustomView(viewToolbar, new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, Gravity.CENTER));
 
-        final EditText editText = (EditText)view.findViewById(R.id.inputPhone);
-        editText.addTextChangedListener(new TextWatcher() {
+          editPhone = (EditText)view.findViewById(R.id.inputPhone);
+        editPhone.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
@@ -84,8 +84,8 @@ public class SignIn4PhoneFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                Log.i("editText count", "" + editText.getText().toString().length());
-                if(editText.getText().toString().length()>3){
+                Log.i("editPhone count", "" + editPhone.getText().toString().length());
+                if(editPhone.getText().toString().length()>4){
                     btnNext.setVisibility(View.VISIBLE);
                 }else {
                     btnNext.setVisibility(View.GONE);

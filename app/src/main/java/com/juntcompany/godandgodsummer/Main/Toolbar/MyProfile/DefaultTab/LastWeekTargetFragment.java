@@ -50,6 +50,7 @@ public class LastWeekTargetFragment extends Fragment {
         actionBar.setCustomView(viewToolbar, new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, Gravity.CENTER));
 
 //        툴바 세팅
+
         return view;
     }
 

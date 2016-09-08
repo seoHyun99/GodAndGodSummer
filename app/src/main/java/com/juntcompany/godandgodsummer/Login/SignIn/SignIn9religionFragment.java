@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.juntcompany.godandgodsummer.Data.User;
@@ -27,6 +28,7 @@ public class SignIn9religionFragment extends Fragment {
         // Required empty public constructor
     }
 
+    private String religionText;
     private static final String Title= "종교 입력";
     public static final String USER_MESSAGE = "user_message";
     @Override
@@ -48,13 +50,13 @@ public class SignIn9religionFragment extends Fragment {
         View viewToolbar = getActivity().getLayoutInflater().inflate(R.layout.toolbar_sign_in, null);
         TextView textTitle = (TextView)viewToolbar.findViewById(R.id.text_title);
         textTitle.setText(Title);
-        Button btn = (Button) viewToolbar.findViewById(R.id.button_next);
-        btn.setOnClickListener(new View.OnClickListener() {
+        final Button btnNext = (Button) viewToolbar.findViewById(R.id.button_next);
+        btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //        프래그먼트 세팅
                 User user = (User)getArguments().getSerializable(SignIn9religionFragment.USER_MESSAGE);
-                user.religion = "기독교";
+                user.religion = religionText;
                 Bundle bundle = new Bundle();
                 bundle.putSerializable(SignIn10GenderFragment.USER_MESSAGE, user);
 
@@ -70,7 +72,32 @@ public class SignIn9religionFragment extends Fragment {
             }
         });
         actionBar.setCustomView(viewToolbar, new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, Gravity.CENTER));
+        RadioGroup radioGroup = (RadioGroup)view.findViewById(R.id.religionGroup);
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int checkId) {
+                switch (checkId){
+                    case R.id.radio_chris:
+                        religionText = "기독교";
+                        btnNext.setVisibility(View.VISIBLE);
+                    break;
+                    case R.id.radio_catholic:
+                        religionText = "천주교";
+                        btnNext.setVisibility(View.VISIBLE);
+                        break;
 
+                    case R.id.radio_buddhism:
+                        religionText = "불교";
+                        btnNext.setVisibility(View.VISIBLE);
+                        break;
+
+                    case R.id.radio_other:
+                        religionText = "기타";
+                        btnNext.setVisibility(View.VISIBLE);
+                        break;
+                }
+            }
+        });
         return view;
     }
 

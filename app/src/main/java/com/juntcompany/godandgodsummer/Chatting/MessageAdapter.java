@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.juntcompany.godandgodsummer.Data.Message;
+import com.juntcompany.godandgodsummer.Data.MessageFire;
 import com.juntcompany.godandgodsummer.R;
 
 import java.util.ArrayList;
@@ -19,11 +20,19 @@ import java.util.List;
 public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private List<Message> items = new ArrayList<Message>();
+    private List<MessageFire> fireItems = new ArrayList<MessageFire>();
     private int[] mUsernameColors;
 
-    public MessageAdapter(List<Message> messages){
-        items = messages;
+    public MessageAdapter(List<MessageFire> messages){
+//        items = messages; //노드 용 파라미터 List<Message> messages
+        fireItems = messages; // 파이어베이스용
     } //아이템에 메시지를 넣는 과정
+
+
+
+    public MessageAdapter(){
+
+    }
 
     public void add(Message message){
         items.add(message);
@@ -32,6 +41,10 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public void addAll(List<Message> messages){
         items.addAll(messages);
         notifyDataSetChanged();
+    }
+
+    public void addAllFire(List<MessageFire> messageFires){
+
     }
 
     //////////////////////////////////////////////////////////////////cursor 쓰는거
@@ -43,12 +56,14 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     @Override
     public int getItemViewType(int position) {
 
-        Message data = items.get(position);
-        if(data.getType() == Message.TYPE_MESSAGE_RECEIVE){
+//        Message data = items.get(position); //노드용
+        //노드용 if(data.getType() == ^^^^^^)
+        MessageFire data = fireItems.get(position);
+        if(data.type == Message.TYPE_MESSAGE_RECEIVE){
             return Message.TYPE_MESSAGE_RECEIVE;
-        }else if(data.getType() == Message.TYPE_MESSAGE_SEND){
+        }else if(data.type == Message.TYPE_MESSAGE_SEND){
             return Message.TYPE_MESSAGE_SEND;
-        }else if(data.getType() == Message.TYPE_LOG){
+        }else if(data.type == Message.TYPE_LOG){
             return Message.TYPE_LOG;
         }
         return super.getItemViewType(position);
@@ -83,24 +98,31 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        Message message = items.get(position);
+//        Message message = items.get(position); // 노드용
+        MessageFire message = fireItems.get(position);
         switch (getItemViewType(position)){
             case Message.TYPE_MESSAGE_RECEIVE:{
-                ((MessageReceiveViewHolder)holder).setData("ddd","ddd");
+//                ((MessageReceiveViewHolder)holder).setData("ddd","ddd");
+                Log.i("receive", "receive onbind view holder");
+                ((MessageReceiveViewHolder)holder).setData(message.username, message.message);
+                return;
             }
             case Message.TYPE_MESSAGE_SEND:{
-                ((MessageSendViewHolder)holder).setData(message.getUsername(), message.getMessage());
+//                ((MessageSendViewHolder)holder).setData(message.getUsername(), message.getMessage()); //노드용
+                ((MessageSendViewHolder)holder).setData(message.username, message.message);
 //                ((MessageSendViewHolder)holder).setData("sss","sss")
                 Log.i("send", "send onbind view holder");
+                return;
             }
             case Message.TYPE_LOG:{
-
+                return;
             }
         }
     }
 
     @Override
     public int getItemCount() {
-        return items.size();
+//        return items.size();//노드용
+        return fireItems.size();
     }
 }

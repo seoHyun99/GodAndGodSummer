@@ -29,7 +29,7 @@ public class SignIn6NicknameFragment extends Fragment {
     public SignIn6NicknameFragment() {
         // Required empty public constructor
     }
-
+    EditText editNickname; // edit 닉네임 용
     private static final String Title= "호칭 입력";
     public static final String USER_MESSAGE = "user_message";
     @Override
@@ -57,7 +57,7 @@ public class SignIn6NicknameFragment extends Fragment {
             public void onClick(View view) {
                 //        프래그먼트 세팅
                 User user = (User)getArguments().getSerializable(SignIn6NicknameFragment.USER_MESSAGE);
-                user.nickName = "준태당";
+                user.name = editNickname.getText().toString();
                 Bundle bundle = new Bundle();
                 bundle.putSerializable(SignIn7BirthFragment.USER_MESSAGE, user);
 
@@ -74,8 +74,8 @@ public class SignIn6NicknameFragment extends Fragment {
         });
         actionBar.setCustomView(viewToolbar, new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, Gravity.CENTER));
 
-        final EditText editText = (EditText)view.findViewById(R.id.inputNickname);
-        editText.addTextChangedListener(new TextWatcher() {
+        editNickname = (EditText)view.findViewById(R.id.inputNickname);
+        editNickname.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
@@ -83,7 +83,7 @@ public class SignIn6NicknameFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if(editText.getText().toString().length()>10){
+                if(editNickname.getText().toString().length()>2){
                     btnNext.setVisibility(View.VISIBLE);
                 }else {
                     btnNext.setVisibility(View.GONE);

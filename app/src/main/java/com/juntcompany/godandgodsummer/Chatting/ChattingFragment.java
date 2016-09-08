@@ -63,7 +63,8 @@ public class ChattingFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_chatting, container, false);
          recyclerView = (RecyclerView)view.findViewById(R.id.recyclerView);
-        mAdapter = new MessageAdapter(mMessages); //메시지를 넣어주는 과정, adapter에 item 에 message 객체 넣어줌
+//        mAdapter = new MessageAdapter(mMessages); //메시지를 넣어주는 과정, adapter에 item 에 message 객체 넣어줌
+        // 노드 쓰려면 주석 풀기
         recyclerView.setAdapter(mAdapter);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);

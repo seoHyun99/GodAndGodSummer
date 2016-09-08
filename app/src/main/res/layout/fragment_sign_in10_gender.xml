@@ -92,12 +92,12 @@
 
 
             <RadioGroup
-                android:id="@+id/genderGroup"
+                android:id="@+id/radioGroup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
                 <RadioButton
-                    android:id="@+id/maleCheck"
+                    android:id="@+id/radio_man"
                     android:layout_width="wrap_content"
                     android:layout_height="70dp"
                     android:layout_centerHorizontal="true"
@@ -110,7 +110,7 @@
                     android:background="#9c9c9c" />
 
                 <RadioButton
-                    android:id="@+id/femaleCheck"
+                    android:id="@+id/radio_woman"
                     android:layout_width="wrap_content"
                     android:layout_height="70dp"
                     android:layout_centerHorizontal="true"

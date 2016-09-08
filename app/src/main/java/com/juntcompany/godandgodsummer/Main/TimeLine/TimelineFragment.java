@@ -4,6 +4,7 @@ package com.juntcompany.godandgodsummer.Main.TimeLine;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
@@ -20,14 +21,27 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.common.api.Api;
 import com.juntcompany.godandgodsummer.Data.MyProfile;
 import com.juntcompany.godandgodsummer.Data.Timeline;
+import com.juntcompany.godandgodsummer.DataStructure.TimeLine.TimelineResult;
+import com.juntcompany.godandgodsummer.DataStructure.TimeLine.TimelineResultResponse;
+import com.juntcompany.godandgodsummer.DataStructure.TimeLine.WriteResult;
 import com.juntcompany.godandgodsummer.Dialog.ReportDialogFragment;
 import com.juntcompany.godandgodsummer.Dialog.WriteReply.WriteReplyFragment;
 import com.juntcompany.godandgodsummer.Main.MainActivity;
 
+import com.juntcompany.godandgodsummer.Manager.PropertyManager;
 import com.juntcompany.godandgodsummer.R;
+import com.juntcompany.godandgodsummer.Util.Rest.ApiClient;
+import com.juntcompany.godandgodsummer.Util.Rest.ApiInterface;
 import com.juntcompany.godandgodsummer.WriteBoard.WriteBoardActivity;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -91,7 +105,7 @@ public class TimelineFragment extends Fragment {
         actionBar.setCustomView(viewToolbar, new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, Gravity.CENTER));
 ////////////////////        툴바셋팅
 
-//        리사이클러뷰 세팅
+//////////////////////////        리사이클러뷰 세팅
          recyclerView = (RecyclerView)view.findViewById(R.id.recyclerView);
           timelineAdapter = new TimelineAdapter();
         timelineAdapter.setOnItemClickListener(new TimelineAdapter.OnAdapterItemClickListener() {
@@ -103,10 +117,9 @@ public class TimelineFragment extends Fragment {
 
             @Override
             public void onAdapterItemLikeClick(View view, int position) {
-                Log.i("TimelineFragment" , "onItemLickClick");
+                Log.i("TimelineFragment" , "좋아요 버튼 클릭");
                 Timeline timeline = timelineAdapter.getItem(position);
 
-                timeline.tlLikeCount +=1;
                 timelineAdapter.add(timeline);
 
             }
@@ -128,9 +141,12 @@ public class TimelineFragment extends Fragment {
             @Override
             public void onAdapterItemReplyClick(View view, int position) {
                 Toast.makeText(getContext(), "댓글 버튼 클릭", Toast.LENGTH_SHORT).show();
+                Log.i("replyButton", "댓글 버튼 클릭");
+                Timeline timeline = timelineAdapter.getItem(position);
+                Log.i("timeline data", timeline.boardId +  timeline.content);
                 WriteReplyFragment df = new WriteReplyFragment();
                 Bundle bundle = new Bundle();
-                bundle.putString(ReportDialogFragment.REPLY_MESSAGE, "reply");
+                bundle.putSerializable(WriteReplyFragment.REPLY_MESSAGE, timeline);
                 df.setArguments(bundle);
                 df.show(getFragmentManager(), REPLY_DIALOG);
 
@@ -145,19 +161,21 @@ public class TimelineFragment extends Fragment {
         recyclerView.setAdapter(timelineAdapter);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
-//      리사이클러뷰 세팅 끝
+///////////////////////////////////////////////      리사이클러뷰 세팅 끝
 //리프레쉬 레이아웃 세팅
          refreshLayout = (SwipeRefreshLayout)view.findViewById(R.id.refreshLayout);
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                initData();
+//                initData();
+                getTimeLineNetwork();
             }
         });
         refreshLayout.setColorSchemeColors(Color.YELLOW, Color.RED, Color.GREEN);
 //        리프레쉬 레이아웃 세팅 끝
+        getTimeLineNetwork();
 
-        initData();
+//        initData();
         initHeaderData();
 
         return view;
@@ -165,16 +183,41 @@ public class TimelineFragment extends Fragment {
 
     SwipeRefreshLayout refreshLayout;
 
+   private void getTimeLineNetwork(){
+       Log.i("api test", ""+PropertyManager.getInstance().getUserId());
+       ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+
+       Call<TimelineResultResponse> call = apiInterface.getTimeLine(PropertyManager.getInstance().getUserId(), 0);
+
+       call.enqueue(new Callback<TimelineResultResponse>() {
+           @Override
+           public void onResponse(Call<TimelineResultResponse> call, Response<TimelineResultResponse> response) {
+                int statusCode = response.code();
+               Log.i("statusCode", "" + statusCode);
+                if(response.isSuccessful()){
+                    List<Timeline> timelines = response.body().results;
+                    timelineAdapter.addAll(timelines);
+                    refreshLayout.setRefreshing(false);
+                }
+           }
+
+           @Override
+           public void onFailure(Call<TimelineResultResponse> call, Throwable t) {
+
+           }
+       });
+   }
+
    private void initData(){
        Log.i("initData", "initData");
        for(int i =0; i<10; i++) {
 
-           Timeline tl = new Timeline();
-           tl.tlUsername = i + "user";
-           tl.tlLikeCount = 3;
-           tl.tlReplyCount = 30;
-           tl.tlContent = i + "번째";
-           timelineAdapter.add(tl);
+//           Timeline tl = new Timeline();
+//           tl.tlUsername = i + "user";
+//           tl.tlLikeCount = 3;
+//           tl.tlReplyCount = 30;
+//           tl.tlContent = i + "번째";
+//           timelineAdapter.add(tl);
    }
        refreshLayout.setRefreshing(false);  //데이터가 추가되면 리프레슁을 false 해야함
 

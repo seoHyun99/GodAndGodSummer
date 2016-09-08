@@ -12,13 +12,22 @@
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimaryDark"/>
 
-    <fragment
-        class="com.juntcompany.godandgodsummer.Chatting.ChattingFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/fragment"
-        android:layout_below="@+id/toolbar"
-         />
+    <!--<fragment-->
+        <!--class="com.juntcompany.godandgodsummer.Chatting.ChattingFragment"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:id="@+id/fragment"-->
+        <!--android:layout_below="@+id/toolbar"-->
+         <!--/>-->
+<!--노드 채팅 프래그 먼트-->
 
+
+    <fragment
+    class="com.juntcompany.godandgodsummer.Chatting.FirebaseChattingFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/fragment"
+    android:layout_below="@+id/toolbar"
+    />
 
 </RelativeLayout>

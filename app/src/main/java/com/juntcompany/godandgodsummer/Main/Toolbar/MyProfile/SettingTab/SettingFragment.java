@@ -1,14 +1,25 @@
 package com.juntcompany.godandgodsummer.Main.Toolbar.MyProfile.SettingTab;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
+import com.juntcompany.godandgodsummer.Data.User;
+import com.juntcompany.godandgodsummer.Login.LoginActivity;
 import com.juntcompany.godandgodsummer.R;
+import com.juntcompany.godandgodsummer.Util.Rest.ApiClient;
+import com.juntcompany.godandgodsummer.Util.Rest.ApiInterface;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -72,7 +83,9 @@ public class SettingFragment extends Fragment {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                networkLogout();
+                Intent intent = new Intent(getContext(), LoginActivity.class);
+                startActivity(intent);
             }
         });
         btn =  (Button)view.findViewById(R.id.button_exit_forever);
@@ -84,6 +97,24 @@ public class SettingFragment extends Fragment {
         });
 
         return view;
+    }
+
+    private void networkLogout(){
+        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+        Call<User> call = apiInterface.userLogout();
+        call.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                Log.i("response", response.body().result.message);
+                Toast.makeText(getContext(), response.body().result.message, Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+
+            }
+        });
     }
 
 }

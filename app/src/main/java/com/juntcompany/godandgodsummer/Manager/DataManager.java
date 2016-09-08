@@ -1,8 +1,7 @@
-package com.juntcompany.godandgodsummer.Util;
+package com.juntcompany.godandgodsummer.Manager;
 
 import android.annotation.TargetApi;
 import android.content.ContentValues;
-import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -10,6 +9,8 @@ import android.icu.util.Calendar;
 import android.os.Build;
 
 import com.juntcompany.godandgodsummer.Data.Message;
+import com.juntcompany.godandgodsummer.Util.DBContants;
+import com.juntcompany.godandgodsummer.Util.GodAndGod;
 
 /**
  * Created by EOM on 2016-07-28.

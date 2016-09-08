@@ -10,6 +10,12 @@ import android.widget.Toast;
 
 import com.juntcompany.godandgodsummer.Data.User;
 import com.juntcompany.godandgodsummer.R;
+import com.juntcompany.godandgodsummer.Util.Rest.ApiClient;
+import com.juntcompany.godandgodsummer.Util.Rest.ApiInterface;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class SignInActivity extends AppCompatActivity {
 
@@ -49,7 +55,21 @@ public class SignInActivity extends AppCompatActivity {
         Log.i("activity user", this.user.phoneNumber +" : " + this.user.birthDay);
     }
 
-    public void callSignUpLast(){
-        Log.i("user", this.user.phoneNumber + this.user.email);
+    public void callSignUpLast(User user){ //마지막 signin11comfirm 프래그먼트까지 다 돌고 마칠때 호출하는 메소드
+        Log.i("user", this.user.phoneNumber + this.user.email + " ::::" + user.email + user.password);
+        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+        Call<User> call =apiInterface.createUser(user.email, user.name, user.password, user.religion, user.phoneNumber, user.birthDay);
+        call.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                Log.i("response", response.body().toString());
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+
+            }
+        });
+        finish();
     }
 }

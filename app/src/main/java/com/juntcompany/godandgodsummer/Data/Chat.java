@@ -7,4 +7,6 @@ public class Chat {
     public String friendName;
     public String lastSpeak;
     public String lastTime;
+
+
 }

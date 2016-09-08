@@ -65,15 +65,17 @@ public class SignIn3PolicyFragment extends Fragment {
 
             }
         });
-        Button btnAgree = (Button)view.findViewById(R.id.button_agree);
+        final Button btnAgree = (Button)view.findViewById(R.id.button_agree);
         btnAgree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(!btnSelected) {
                     btnNext.setVisibility(View.VISIBLE);
+                    btnAgree.setBackgroundResource(R.drawable.button_confirm);//초록색 배경
                     btnSelected = true;
                 }else {
                     btnNext.setVisibility(View.GONE);
+                    btnAgree.setBackgroundResource(R.drawable.button_agree);//회색 배경
                     btnSelected =false;
                 }
 

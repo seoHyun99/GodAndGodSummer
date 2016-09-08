@@ -18,18 +18,28 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ScrollView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.juntcompany.godandgodsummer.DataStructure.TimeLine.WriteResult;
 import com.juntcompany.godandgodsummer.Dialog.DeleteDialogFragment;
-import com.juntcompany.godandgodsummer.Main.MainActivity;
 import com.juntcompany.godandgodsummer.Manager.PropertyManager;
 import com.juntcompany.godandgodsummer.R;
+import com.juntcompany.godandgodsummer.Util.Rest.ApiClient;
+import com.juntcompany.godandgodsummer.Util.Rest.ApiInterface;
+
+import org.json.JSONObject;
 
 import java.io.File;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class WriteBoardActivity extends AppCompatActivity {
 
 
+    File file; //네트워크로 보낼 값
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,14 +63,28 @@ public class WriteBoardActivity extends AppCompatActivity {
 
         final ImageView imageView = (ImageView)findViewById(R.id.imageView);
 
-        EditText editContent = (EditText)findViewById(R.id.edit_content);
+        final EditText editContent = (EditText)findViewById(R.id.edit_content);
         editContent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 imageView.setVisibility(View.GONE); // 글쓰는 곳 edittext 클릭하면 옆에 펜모양 없어지기
             }
         });
+        Button btnWriteBoard = (Button)findViewById(R.id.button_write_board);
+        btnWriteBoard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                ApiInterface apiInterface =  ApiClient.getClient().create(ApiInterface.class);
+//                Call<WriteResult> call = apiInterface.test();
+//                new MyTask<WriteResult>().execute(call);
+//                writeBoardNetwork(PropertyManager.getInstance().getUserEmail(), PropertyManager.getInstance().getUserEmail(), editContent.getText().toString(), );
+//                testNetwork();
+                writeBoardNetwork(editContent.getText().toString(), file);
+            }
+        });
 
+
+        //////////////////////////////////////////////////////////////////////////이미지 가져오기
         ImageView imagePhoto = (ImageView)findViewById(R.id.image_photo);
         imagePhoto.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,6 +99,8 @@ public class WriteBoardActivity extends AppCompatActivity {
         ScrollView scrollView = (ScrollView)findViewById(R.id.scrollView);
         scrollView.setEnabled(false); //이미지가 리사이즈 되어도 안줄어들려면 scrollview 사용 해야함
     }
+    //////////////////////////////////////////////////////////////////////////이미지 가져오기
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -87,7 +113,7 @@ public class WriteBoardActivity extends AppCompatActivity {
             if (c.moveToNext()) {
                 String path = c.getString(c.getColumnIndex(MediaStore.Images.Media.DATA));
 //                PropertyManager.getInstance().setProfileImage(path); //이미지를 저장
-                File file = new File(path);
+                 file = new File(path);
                 Uri fileUri = Uri.fromFile(file);
                 ImageView imagePick = (ImageView)findViewById(R.id.image_pick);
                 Glide.with(getApplicationContext()).load(fileUri).into(imagePick);
@@ -109,4 +135,101 @@ public class WriteBoardActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-}
+    static final String PROFILE_URL = "https://godandgodsummer.s3.ap-northeast-2.amazonaws.com/profile/";
+
+    private void writeBoardNetwork(String content, File photo){
+
+        Log.i("Json parse", PropertyManager.getInstance().getUserName() + PropertyManager.getInstance().getUserEmail() +
+                PROFILE_URL + PropertyManager.getInstance().getUserEmail() + content +  photo);
+        Log.i("Json parse2222", JSONObject.quote(PropertyManager.getInstance().getUserName()));
+        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+        Call<WriteResult> call = apiInterface.writeTimeLine(PropertyManager.getInstance().getUserName(), PropertyManager.getInstance().getUserEmail(),
+                                                              PROFILE_URL + PropertyManager.getInstance().getUserEmail(), content, photo);
+        call.enqueue(new Callback<WriteResult>() {
+            @Override
+            public void onResponse(Call<WriteResult> call, Response<WriteResult> response) {
+                if(response.isSuccessful()){
+//                    Toast.makeText(getApplicationContext(), response.body().result.message , Toast.LENGTH_SHORT).show();
+                    Log.i("writeboard", response.body() + " : " + response.body().result.message);
+                    finish();
+                }else {
+                    Toast.makeText(getApplicationContext(), "네트워크 상태를 확인해주세요." , Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<WriteResult> call, Throwable t) {
+
+            }
+        });
+    }
+//    private void writeBoardNetwork(){
+//        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+//        Call<WriteResult> call = apiInterface.writeTimeLine("juntae", "tttt@ddd", "제발 작동해라");
+//        call.enqueue(new Callback<WriteResult>() {
+//            @Override
+//            public void onResponse(Call<WriteResult> call, Response<WriteResult> response) {
+//                if(response.isSuccessful()){
+//                    String message = response.body().result.message;
+//                    Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+//                }else {
+//                    Toast.makeText(getApplicationContext(), "네트워크 상태를 점검해 주세요", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<WriteResult> call, Throwable t) {
+//
+//            }
+//        });
+//    }
+
+
+
+//    private void testNetwork(){
+//        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+//        Call<WriteResult> call = apiInterface.test();
+//        call.enqueue(new Callback<WriteResult>() {
+//            @Override
+//            public void onResponse(Call<WriteResult> call, Response<WriteResult> response) {
+//                Log.i("response", response.body().result.message + response.body());
+//                String message = response.body().result.message.trim();
+//                Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+//            }
+//
+//            @Override
+//            public void onFailure(Call<WriteResult> call, Throwable t) {
+//
+//            }
+//        });
+    }
+
+    //테스트용
+//    class MyTask<T> extends AsyncTask<Call<T>, Integer, T>{
+//
+//        @Override
+//        protected T doInBackground(Call<T>... calls) {
+//            Call<T> call = calls[0];
+//            Response<T> response = null;
+//            try {
+//                response = call.execute();
+//                if (response.isSuccessful()) {
+//                    return response.body();
+//                }
+//            } catch (IOException e1) {
+//                e1.printStackTrace();
+//            }
+//
+//            return null;
+//        }
+//
+//        @Override
+//        protected void onPostExecute(T t) {
+//            super.onPostExecute(t);
+//            if(t!=null){
+//                Toast.makeText(getApplicationContext(), t.toString(), Toast.LENGTH_SHORT).show();
+//            }
+//        }
+//    }
+//
+//}

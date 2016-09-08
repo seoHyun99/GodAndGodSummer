@@ -133,12 +133,12 @@
 
 
             <RadioGroup
-                android:id="@+id/genderGroup"
+                android:id="@+id/religionGroup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
                 <RadioButton
-                    android:id="@+id/ChristianCheck"
+                    android:id="@+id/radio_chris"
                     android:layout_width="wrap_content"
                     android:layout_height="45dp"
                     android:layout_centerHorizontal="true"
@@ -150,7 +150,7 @@
                     android:background="#9c9c9c" />
 
                 <RadioButton
-                    android:id="@+id/CatholicCheck"
+                    android:id="@+id/radio_catholic"
                     android:layout_width="wrap_content"
                     android:layout_height="45dp"
                     android:layout_centerHorizontal="true"
@@ -161,7 +161,7 @@
                     android:layout_height="1dp"
                     android:background="#9c9c9c" />
                 <RadioButton
-                    android:id="@+id/BuddhismCheck"
+                    android:id="@+id/radio_buddhism"
                     android:layout_width="wrap_content"
                     android:layout_height="45dp"
                     android:layout_centerHorizontal="true"
@@ -172,7 +172,7 @@
                     android:layout_height="1dp"
                     android:background="#9c9c9c" />
                 <RadioButton
-                    android:id="@+id/othersReligionCheck"
+                    android:id="@+id/radio_other"
                     android:layout_width="wrap_content"
                     android:layout_height="45dp"
                     android:layout_centerHorizontal="true"
