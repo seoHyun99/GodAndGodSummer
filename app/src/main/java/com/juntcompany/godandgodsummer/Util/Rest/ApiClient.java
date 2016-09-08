@@ -10,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by EOM on 2016-08-02.
  */
 public class ApiClient {
-    public static final String BASE_URL = "http://192.168.0.3/";
+    public static final String BASE_URL = "http://52.78.147.77/";
     private static Retrofit retrofit = null;
 
     Gson gson = new GsonBuilder()
