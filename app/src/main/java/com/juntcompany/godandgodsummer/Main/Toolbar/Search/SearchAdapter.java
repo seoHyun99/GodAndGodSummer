@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.juntcompany.godandgodsummer.Data.Friend;
+import com.juntcompany.godandgodsummer.Data.User;
 import com.juntcompany.godandgodsummer.Main.TimeLine.TimelineViewHolder;
 import com.juntcompany.godandgodsummer.R;
 
@@ -17,16 +18,19 @@ import java.util.List;
  */
 public class SearchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements SearchViewHolder.OnItemSelectClickListener{
 
-    List<Friend> items = new ArrayList<Friend>();
+    List<User> items = new ArrayList<User>();
 
-    public void add(Friend friend){
-        items.add(friend);
+    public void add(User user){
+        items.add(user);
         notifyDataSetChanged();
     }
 
-    public void addAll(List<Friend> friends){
-        items.addAll(friends);
+    public void addAll(List<User> users){
+        items.addAll(users);
         notifyDataSetChanged();
+    }
+    public void clear(){
+        items.clear();
     }
 
     @Override
@@ -55,7 +59,7 @@ public class SearchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         notifyDataSetChanged();
     }
 
-    public Friend getItem(int position){
+    public User getItem(int position){
         if(position > items.size()){
             return null;
         }

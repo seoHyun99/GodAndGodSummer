@@ -20,7 +20,7 @@ import com.juntcompany.godandgodsummer.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ProfileCorrectFragment extends Fragment {
+public class ProfileCorrectFragment extends Fragment { // 내 프로필 정보 수정하는 곳
 
 
     public ProfileCorrectFragment() {

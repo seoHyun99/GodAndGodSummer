@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.juntcompany.godandgodsummer.Data.User;
-import com.juntcompany.godandgodsummer.DataStructure.UserInfoResult;
+import com.juntcompany.godandgodsummer.DataStructure.UserInfoResponse;
 import com.juntcompany.godandgodsummer.Login.SignIn.SignInActivity;
 import com.juntcompany.godandgodsummer.Main.MainActivity;
 import com.juntcompany.godandgodsummer.Manager.PropertyManager;
@@ -92,10 +92,10 @@ public class LoginActivity extends AppCompatActivity {
 
     private void loginInfoNetwork(String email){
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
-        Call<UserInfoResult> call = apiInterface.userInfo(email);
-        call.enqueue(new Callback<UserInfoResult>() {
+        Call<UserInfoResponse> call = apiInterface.userInfo(email);
+        call.enqueue(new Callback<UserInfoResponse>() {
             @Override
-            public void onResponse(Call<UserInfoResult> call, Response<UserInfoResult> response) {
+            public void onResponse(Call<UserInfoResponse> call, Response<UserInfoResponse> response) {
                 if(response.isSuccessful()){
                     Toast.makeText(getApplicationContext(), response.body().user.email, Toast.LENGTH_SHORT).show();
                     PropertyManager.getInstance().setUserEmail(response.body().user.email);
@@ -108,7 +108,7 @@ public class LoginActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<UserInfoResult> call, Throwable t) {
+            public void onFailure(Call<UserInfoResponse> call, Throwable t) {
 
             }
         });

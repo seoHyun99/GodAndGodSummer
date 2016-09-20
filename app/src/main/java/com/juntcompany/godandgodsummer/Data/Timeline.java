@@ -45,8 +45,8 @@ public class Timeline implements Serializable {
     public String __v;
 
     @SerializedName("like")
-    List<Like> likes;
+    public List<Like> likes;
     @SerializedName("reply")
-    List<Reply> replies;
+    public List<Reply> replies;
 
 }

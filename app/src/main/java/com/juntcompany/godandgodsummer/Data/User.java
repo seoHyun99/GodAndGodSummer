@@ -28,6 +28,15 @@ public class User implements Serializable{
     public String religion;
     @SerializedName("user_gender")
     public String gender;
+    @SerializedName("user_photo")
+    public String userPhoto;
+
+    public String introduction;
+    public int friendNum;
+    public String religionArea;
+    public String city;
+
+
 
     public UserResult result;
 

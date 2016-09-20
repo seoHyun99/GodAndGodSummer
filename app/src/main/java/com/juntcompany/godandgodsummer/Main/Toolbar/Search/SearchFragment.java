@@ -1,29 +1,33 @@
 package com.juntcompany.godandgodsummer.Main.Toolbar.Search;
 
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.juntcompany.godandgodsummer.Data.Friend;
+import com.juntcompany.godandgodsummer.Data.User;
+import com.juntcompany.godandgodsummer.DataStructure.UserSearchResponse;
 import com.juntcompany.godandgodsummer.Main.FriendInfo.FriendInfoFragment;
 import com.juntcompany.godandgodsummer.Main.MainActivity;
-import com.juntcompany.godandgodsummer.Main.TimeLine.TimelineFragment;
 import com.juntcompany.godandgodsummer.R;
-import com.juntcompany.godandgodsummer.Util.GodAndGod;
+import com.juntcompany.godandgodsummer.Util.Rest.ApiClient;
+import com.juntcompany.godandgodsummer.Util.Rest.ApiInterface;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -42,10 +46,6 @@ public class SearchFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-//        Context mContext = GodAndGod.getContext();
-//        InputMethodManager imm = (InputMethodManager)mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
-//        imm.hideSoftInputFromWindow(editSearch.getWindowToken(), 0);
 
 
         View view = inflater.inflate(R.layout.fragment_search, container, false);
@@ -62,9 +62,28 @@ public class SearchFragment extends Fragment {
         View viewToolbar = getActivity().getLayoutInflater().inflate(R.layout.toolbar_main_search, null);
          editSearch = (EditText)viewToolbar.findViewById(R.id.edit_search);
         editSearch.requestFocus();
+        editSearch.addTextChangedListener(new TextWatcher() { // 검색창에 user email 을 치면 텍스트 칠때마다 찾게 함
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if(editSearch.getText().toString().length()>2) {
+                    searchUserNetwork(editSearch.getText().toString());
+                    Toast.makeText(getContext(), editSearch.getText().toString(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
         actionBar.setCustomView(viewToolbar, new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, Gravity.CENTER));
-
+//////////////////////////툴바 세팅 끝
+        ////////////////////////리사이클러뷰 세팅
         recyclerView = (RecyclerView)view.findViewById(R.id.recyclerView);
         mAdapter = new SearchAdapter();
         mAdapter.setOnItemClickListener(new SearchAdapter.OnAdapterItemClickListener() {
@@ -76,7 +95,11 @@ public class SearchFragment extends Fragment {
 
             @Override
             public void onAdapterItemClick(View view, int position) {
+                User user = mAdapter.getItem(position);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable(FriendInfoFragment.FRIEND_INFO_MESSAGE, user);
                 Fragment f = new FriendInfoFragment();
+                f.setArguments(bundle);
                 getActivity().getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.container, f)
@@ -88,7 +111,7 @@ public class SearchFragment extends Fragment {
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
-//      리사이클러뷰 세팅 끝
+////////////////////////////////////      리사이클러뷰 세팅 끝
 
         initData();
         return view;
@@ -96,9 +119,9 @@ public class SearchFragment extends Fragment {
 
     private void initData(){
         for(int i =0; i<4; i++){
-            Friend friend = new Friend();
-            friend.friendName = i + "번째 친구";
-            mAdapter.add(friend);
+            User user = new User();
+             user.email= i + "번째 친구";
+            mAdapter.add(user);
         }
     }
 
@@ -111,6 +134,25 @@ public class SearchFragment extends Fragment {
             }
         }
         return true;
+    }
+
+    private void searchUserNetwork(String email){
+        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+        Call<UserSearchResponse> call = apiInterface.userSearch(email);
+        call.enqueue(new Callback<UserSearchResponse>() {
+            @Override
+            public void onResponse(Call<UserSearchResponse> call, Response<UserSearchResponse> response) {
+                if(response.isSuccessful()){
+                    mAdapter.clear();
+                    mAdapter.addAll(response.body().users);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UserSearchResponse> call, Throwable t) {
+                Toast.makeText(getContext(), "네트워크 상태를 확인해주세요", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 

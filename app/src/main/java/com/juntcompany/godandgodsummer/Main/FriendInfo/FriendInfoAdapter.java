@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 
 import com.juntcompany.godandgodsummer.Data.Friend;
 import com.juntcompany.godandgodsummer.Data.Timeline;
+import com.juntcompany.godandgodsummer.Data.User;
+import com.juntcompany.godandgodsummer.Main.TimeLine.TimelineHeaderViewHolder;
 import com.juntcompany.godandgodsummer.Main.TimeLine.TimelineViewHolder;
 import com.juntcompany.godandgodsummer.R;
 
@@ -22,11 +24,11 @@ import java.util.zip.Inflater;
 public class FriendInfoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements FriendInfoHeaderViewHolder.OnItemSelectClickListener, TimelineViewHolder.OnItemSelectClickListener{
 
 
-    Friend header = new Friend();
+    User header;
     List<Timeline> items = new ArrayList<Timeline>();
 
-    public void addHeader(Friend friend){
-        this.header = friend;
+    public void addHeader(User user){
+        this.header = user;
         notifyDataSetChanged();
     }
 
@@ -80,7 +82,13 @@ public class FriendInfoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-
+        //        헤더인경우
+        if(position==0){
+            ((FriendInfoHeaderViewHolder) holder).setData(header);
+        }else {
+            int index = position - 1; //헤더 하나 제외
+            ((TimelineViewHolder) holder).setData(items.get(index));
+        }
     }
 
     @Override

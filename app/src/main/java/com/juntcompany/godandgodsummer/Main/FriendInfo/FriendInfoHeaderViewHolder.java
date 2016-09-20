@@ -1,11 +1,15 @@
 package com.juntcompany.godandgodsummer.Main.FriendInfo;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.juntcompany.godandgodsummer.Data.Friend;
+import com.juntcompany.godandgodsummer.Data.User;
 import com.juntcompany.godandgodsummer.R;
 
 /**
@@ -26,14 +30,23 @@ public class FriendInfoHeaderViewHolder extends RecyclerView.ViewHolder{
     RelativeLayout btnAddFriend;
     RelativeLayout btnMessage;
 
+    TextView textUserEmail;
+    TextView textUserName;
+    ImageView imageUserPhoto;
     TextView textFriendIntroduction;
     TextView textFriendReligion;
     TextView textFriendNum;
     TextView textFriendReligionArea;
     TextView textFriendCity;
+    Context mContext;
 
     public FriendInfoHeaderViewHolder(View itemView) {
         super(itemView);
+        mContext = itemView.getContext();
+
+        imageUserPhoto = (ImageView)itemView.findViewById(R.id.myProfileUserPicture);
+        textUserEmail = (TextView)itemView.findViewById(R.id.myProfileUserEmail);
+        textUserName = (TextView)itemView.findViewById(R.id.myProfileUserName);;
         textFriendIntroduction = (TextView)itemView.findViewById(R.id.myProfileComment); //자기 소개
         textFriendReligion = (TextView)itemView.findViewById(R.id.myProfileReligion);
         textFriendNum = (TextView)itemView.findViewById(R.id.myProfileFriendNum);
@@ -59,11 +72,15 @@ public class FriendInfoHeaderViewHolder extends RecyclerView.ViewHolder{
         });
     }
 
-    public void setData(Friend friend){
-        textFriendIntroduction.setText(friend.friendIntroduction);
-        textFriendReligion.setText(friend.friendReligion);
-        textFriendNum.setText(""+friend.friendNum);
-        textFriendReligionArea.setText(friend.friendReligionArea);
-        textFriendCity.setText(friend.friendCity);
+    public void setData(User user){
+        textUserEmail.setText(user.email);
+        textUserName.setText(user.name);
+        Glide.with(mContext).load(user.userPhoto).into(imageUserPhoto);
+
+        textFriendIntroduction.setText(user.introduction);
+        textFriendReligion.setText(user.religion);
+        textFriendNum.setText(""+user.friendNum);
+        textFriendReligionArea.setText(user.religionArea);
+        textFriendCity.setText(user.city);
     }
 }

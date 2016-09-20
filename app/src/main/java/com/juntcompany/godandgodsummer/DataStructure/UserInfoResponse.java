@@ -6,7 +6,7 @@ import com.juntcompany.godandgodsummer.Data.User;
 /**
  * Created by EOM on 2016-08-04.
  */
-public class UserInfoResult {
+public class UserInfoResponse {
 
     @SerializedName("result")
     public User user;

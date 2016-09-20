@@ -6,15 +6,25 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.juntcompany.godandgodsummer.Data.MyProfile;
 import com.juntcompany.godandgodsummer.Data.Timeline;
+import com.juntcompany.godandgodsummer.Data.User;
+import com.juntcompany.godandgodsummer.DataStructure.UserInfoResponse;
 import com.juntcompany.godandgodsummer.Dialog.PictureSettingDialogFragment;
 import com.juntcompany.godandgodsummer.Manager.PropertyManager;
 import com.juntcompany.godandgodsummer.R;
+import com.juntcompany.godandgodsummer.Util.Rest.ApiClient;
+import com.juntcompany.godandgodsummer.Util.Rest.ApiInterface;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -92,15 +102,22 @@ public class MyProfileFragment extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
 
-///////////////////리사이클러 뷰 세팅
+////////////////////////리사이클러 뷰 세팅
+//        getUserProfile(PropertyManager.getInstance().getUserEmail()); // 굳이 안하고 프리퍼런스로 값을 다 가져오는게 데이터비용에 적절할것 같음
         initData();
         return view;
     }
 
     private void initData(){
         MyProfile myProfile = new MyProfile();
-        mAdapter.addProfileHeader(myProfile);
-        mAdapter.addHeader(myProfile);
+//        mAdapter.addProfileHeader(myProfile);
+        User user = new User();
+        user.name = PropertyManager.getInstance().getUserName();
+        user.email = PropertyManager.getInstance().getUserEmail();
+        user.introduction = PropertyManager.getInstance().getUserIntroduction();
+        Log.i("user", user.name + user.toString());
+        mAdapter.addProfileHeader(user); //프로필정보
+        mAdapter.addWriteHeader(myProfile); // 글쓰는 창
 
 //        헤더를 두개 넣어야 에러 안남
         for(int i =0; i<4; i++){
@@ -108,6 +125,29 @@ public class MyProfileFragment extends Fragment {
             timeline.content= i + "번째 내용이다";
             mAdapter.add(timeline);
         }
+    }
+
+    private void getUserProfile(String email){
+        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+        Call<UserInfoResponse> call = apiInterface.userInfo(email);
+        call.enqueue(new Callback<UserInfoResponse>() {
+            @Override
+            public void onResponse(Call<UserInfoResponse> call, Response<UserInfoResponse> response) {
+                if(response.isSuccessful()){
+                    Toast.makeText(getContext(), "" + response.body().toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "" + response.body().user, Toast.LENGTH_SHORT).show();
+
+                    mAdapter.addProfileHeader(response.body().user);
+                    initData();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UserInfoResponse> call, Throwable t) {
+                Toast.makeText(getContext(), "네트워크 상태를 확인해주세요", Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
 //    @Override

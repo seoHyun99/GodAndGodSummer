@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.juntcompany.godandgodsummer.Data.Friend;
+import com.juntcompany.godandgodsummer.Data.User;
 import com.juntcompany.godandgodsummer.Main.TimeLine.TimelineViewHolder;
 import com.juntcompany.godandgodsummer.R;
 
@@ -54,8 +55,8 @@ public class SearchViewHolder extends RecyclerView.ViewHolder {
         });
     }
 
-    public void setData(Friend friend){
+    public void setData(User user){
 //        imagePicture.setImageResource();
-           textFriendName.setText(friend.friendName);
+           textFriendName.setText(user.email);
     }
 }

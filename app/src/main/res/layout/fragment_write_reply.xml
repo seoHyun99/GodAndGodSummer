@@ -1,20 +1,23 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
     android:background="@color/colorWhite"
     tools:context="com.juntcompany.godandgodsummer.Dialog.WriteReply.WriteReplyFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="400dp"
+
         android:id="@+id/recyclerView"
-        android:layout_above="@+id/tableLayout"/>
+        android:layout_alignParentTop="true"
+        />
 
     <TableLayout
         android:id="@+id/tableLayout"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
        >
@@ -39,19 +42,19 @@
                 android:id="@+id/edit_reply"
                 android:hint="이야기를 써주세요"/>
 
-            <Button
-                android:layout_width="70dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/button_camera"
-                android:background="@android:drawable/ic_menu_camera"
-                />
+            <!--<Button-->
+                <!--android:layout_width="70dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:id="@+id/button_camera"-->
+                <!--android:background="@android:drawable/ic_menu_camera"-->
+                <!--/>-->
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:id="@+id/button_send"
-                android:text="보내기"
+                android:text="댓글 달기"
                 />
         </TableRow>
 

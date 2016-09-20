@@ -1,12 +1,14 @@
 package com.juntcompany.godandgodsummer.Main.Toolbar.MyProfile.ProfileTab;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.juntcompany.godandgodsummer.Data.MyProfile;
 import com.juntcompany.godandgodsummer.Data.Timeline;
+import com.juntcompany.godandgodsummer.Data.User;
 import com.juntcompany.godandgodsummer.Main.TimeLine.TimelineHeaderViewHolder;
 import com.juntcompany.godandgodsummer.Main.TimeLine.TimelineViewHolder;
 import com.juntcompany.godandgodsummer.R;
@@ -19,7 +21,9 @@ import java.util.List;
  */
 public class MyProfileAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements MyProfileHeaderViewHolder.OnItemSelectClickListener, TimelineViewHolder.OnItemSelectClickListener, TimelineHeaderViewHolder.OnItemClickListener{
 
-    List<MyProfile> header = new ArrayList<MyProfile>(); // 헤더 두개 임
+    User header; // 헤더 두개 임
+    List<MyProfile> headerWriteTimeline = new ArrayList<MyProfile>();
+
     List<Timeline> items = new ArrayList<Timeline>();
 
     public void add(Timeline timeline) {
@@ -27,17 +31,17 @@ public class MyProfileAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         notifyDataSetChanged();
     }
 
-    public void addHeader(MyProfile myProfile){
-        header.add(myProfile);
+    public void addWriteHeader(MyProfile profile){ // 타임라인에 글 적기 위한 아이템
+        headerWriteTimeline.add(profile);
         notifyDataSetChanged();
     }
-    public void addProfileHeader(MyProfile myProfile){
-        header.add(myProfile);
+    public void addProfileHeader(User user){ //프로필 정보 관련 헤더 첫번째 인덱스
+        this.header = user;
         notifyDataSetChanged();
     }
 
-    public void addChangeProfileHeader(MyProfile myProfile){ //이미지가 바뀌면 쓸려고 만듬
-        header.add(0, myProfile);
+    public void addChangeProfileHeader(User user){ //이미지가 바뀌면 쓸려고 만듬
+//        header.add(0, user);
         notifyDataSetChanged();
     }
 
@@ -84,24 +88,39 @@ public class MyProfileAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        if (position == 0) {
-            //헤더
-            ((MyProfileHeaderViewHolder) holder).setData(header.get(position));
-        }else if(position == 1){
-//            타임라인 헤더뷰 재사용
-            ((TimelineHeaderViewHolder) holder).setData(header.get(position));
-        }else {
-            int index = position - 2; //헤더가 두개이므로
-//            타임라인 item viewHolder 재사용
-            ((TimelineViewHolder) holder).setData(items.get(index));
+
+        switch (getItemViewType(position)){
+            case VIEW_TYPE_PROFILE_HEADER:{
+                Log.i("user adapter", this.header.email + this.header.toString());
+                ((MyProfileHeaderViewHolder) holder).setData(this.header);
+
+            }
+            case VIEW_TYPE_HEADER:{
+
+            }
+            case VIEW_TYPE_ITEM:{
+
+            }
         }
+
+//        if (position == 0) {
+//            //헤더
+//            ((MyProfileHeaderViewHolder) holder).setData(header);
+//        }else if(position == 1){
+////            타임라인 헤더뷰 재사용
+//            ((TimelineHeaderViewHolder) holder).setData(headerWriteTimeline.get(position));
+//        }else {
+//            int index = position - 2; //헤더가 두개이므로
+////            타임라인 item viewHolder 재사용
+//            ((TimelineViewHolder) holder).setData(items.get(index));
+//        }
     }
 
 
     @Override
     public int getItemViewType(int position) {
         if (position < 1) {
-            return VIEW_TYPE_PROFILE_HEADER;
+            return VIEW_TYPE_PROFILE_HEADER; // 프로필 정보
         }else if(position < 2){
             return VIEW_TYPE_HEADER;
         }
@@ -113,9 +132,9 @@ public class MyProfileAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         return items.size() + 2; // 헤더 포지션 2 더함
     }
 
-    public MyProfile getFirstHeaderItem(int position){
+    public User getFirstHeaderItem(int position){
         if(position ==0){
-            return header.get(position); // 0번 인덱스
+            return header; // 0번 인덱스
         }
         return null;
     }

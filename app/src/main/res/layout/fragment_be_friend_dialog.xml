@@ -1,0 +1,53 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Dialog.BeNotFriendDialogFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@android:color/black"
+            android:text="친구를 추가하시겠습니까?"
+            android:textAlignment="center"/>
+
+        <View
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorGrey" />
+
+        <TableRow>
+            <Button
+                android:id="@+id/button_cancel"
+                android:text="취소"
+                android:layout_height="60dp"
+                android:background="@null"
+                android:layout_weight="1"
+                />
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#90909090" />
+
+            <Button
+                android:id="@+id/button_confirm"
+                android:background="@null"
+                android:layout_height="60dp"
+                android:text="확인"
+                android:layout_weight="1"
+                />
+
+        </TableRow>
+    </TableLayout>
+
+</RelativeLayout>

@@ -83,4 +83,13 @@ public class PropertyManager {
     public String getProfileImage(){
         return mPrefs.getString(FIELD_PROFILE_IMAGE, "");
     }
+
+    private static final String FIELD_USER_INTRODUCTION = "user_introduction";
+    public void setUserIntroduction(String filePath){
+        mEditor.putString(FIELD_PROFILE_IMAGE, filePath);
+        mEditor.commit();
+    }
+    public String getUserIntroduction(){
+        return mPrefs.getString(FIELD_USER_INTRODUCTION, "");
+    }
 }

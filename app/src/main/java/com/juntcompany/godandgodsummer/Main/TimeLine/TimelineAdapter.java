@@ -38,6 +38,10 @@ public class TimelineAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         notifyDataSetChanged();
     }
 
+    public void clear(){
+        items.clear();
+    }
+
     private static final int VIEW_TYPE_HEADER = 0;
     private static final int VIEW_TYPE_ITEM = 100;
 

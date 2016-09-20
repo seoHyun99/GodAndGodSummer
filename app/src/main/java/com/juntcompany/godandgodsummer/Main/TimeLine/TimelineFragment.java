@@ -23,6 +23,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.common.api.Api;
 import com.juntcompany.godandgodsummer.Data.MyProfile;
+import com.juntcompany.godandgodsummer.Data.Reply;
 import com.juntcompany.godandgodsummer.Data.Timeline;
 import com.juntcompany.godandgodsummer.DataStructure.TimeLine.TimelineResult;
 import com.juntcompany.godandgodsummer.DataStructure.TimeLine.TimelineResultResponse;
@@ -145,6 +146,13 @@ public class TimelineFragment extends Fragment {
                 Timeline timeline = timelineAdapter.getItem(position);
                 Log.i("timeline data", timeline.boardId +  timeline.content);
                 WriteReplyFragment df = new WriteReplyFragment();
+                df.setOnDialogResultListener(new WriteReplyFragment.OnDialogResultListener() {
+                    @Override
+                    public void onReplyResult(List<Reply> replies) {
+//                        Toast.makeText(getContext(), "hihihi" , Toast.LENGTH_SHORT).show();
+                        getTimeLineNetwork(); //일단 writeReplyFragment 다욜로그 를 종료하면 다시 네트워크에서 데이터를 리로드 시킴
+                    }
+                });
                 Bundle bundle = new Bundle();
                 bundle.putSerializable(WriteReplyFragment.REPLY_MESSAGE, timeline);
                 df.setArguments(bundle);
@@ -195,6 +203,7 @@ public class TimelineFragment extends Fragment {
                 int statusCode = response.code();
                Log.i("statusCode", "" + statusCode);
                 if(response.isSuccessful()){
+                    timelineAdapter.clear();
                     List<Timeline> timelines = response.body().results;
                     timelineAdapter.addAll(timelines);
                     refreshLayout.setRefreshing(false);
@@ -227,5 +236,12 @@ public class TimelineFragment extends Fragment {
 
         myProfile.myImage2 = getResources().getDrawable(R.drawable.profile1);
         timelineAdapter.addHeader(myProfile);
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getTimeLineNetwork();
     }
 }

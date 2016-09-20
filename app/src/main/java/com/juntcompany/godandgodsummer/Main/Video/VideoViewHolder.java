@@ -5,7 +5,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.github.nkzawa.socketio.client.On;
 import com.juntcompany.godandgodsummer.Data.Video;
 import com.juntcompany.godandgodsummer.R;
 
@@ -39,7 +38,7 @@ public class VideoViewHolder extends RecyclerView.ViewHolder {
                 }
             }
         });
-        videoThumbnail = (ImageView)itemView.findViewById(R.id.image_video_thumbnail);
+        videoThumbnail = (ImageView)itemView.findViewById(R.id.image_reply_profile);
         videoName =(TextView)itemView.findViewById(R.id.text_video_name);
         videoOwner = (TextView)itemView.findViewById(R.id.text_video_owner);
     }

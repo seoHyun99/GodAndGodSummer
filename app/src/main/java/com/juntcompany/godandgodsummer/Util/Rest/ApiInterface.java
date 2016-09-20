@@ -7,10 +7,11 @@ import com.juntcompany.godandgodsummer.DataStructure.FriendResult;
 import com.juntcompany.godandgodsummer.DataStructure.LikeResult;
 import com.juntcompany.godandgodsummer.DataStructure.ReplyResult;
 import com.juntcompany.godandgodsummer.DataStructure.ReportResult;
-import com.juntcompany.godandgodsummer.DataStructure.TimeLine.TimelineResult;
 import com.juntcompany.godandgodsummer.DataStructure.TimeLine.TimelineResultResponse;
-import com.juntcompany.godandgodsummer.DataStructure.UserInfoResult;
+import com.juntcompany.godandgodsummer.DataStructure.UserInfoResponse;
 import com.juntcompany.godandgodsummer.DataStructure.TimeLine.WriteResult;
+import com.juntcompany.godandgodsummer.DataStructure.UserSearchResponse;
+import com.juntcompany.godandgodsummer.DataStructure.UserTimelineResponse;
 import com.juntcompany.godandgodsummer.DataStructure.YoutubeResult;
 
 import java.io.File;
@@ -42,14 +43,17 @@ public interface ApiInterface {
     Call<User> userLogout();
 
     @GET("/user/myinfo/{email}")
-    Call<UserInfoResult> userInfo(@Path("email") String email);
+    Call<UserInfoResponse> userInfo(@Path("email") String email);
 
     @Multipart
     @POST("/user/changePhoto/{user_id}")
-    Call<UserInfoResult> userChangePhoto(@Path("user_id") String userId, @Part("photo") String userPhoto);
+    Call<UserInfoResponse> userChangePhoto(@Path("user_id") String userId, @Part("photo") String userPhoto);
 
 //    @GET("/board/write/{username}/{email}/{content}")
 //    Call<WriteResult> writeTimeLine(@Path("username") String username, @Path("email") String email, @Path("content") String content);
+
+    @GET("/user/search/{email}")//O
+    Call<UserSearchResponse> userSearch(@Path("email") String email);
 
     @Multipart //O
     @POST("/board/write")
@@ -65,11 +69,11 @@ public interface ApiInterface {
     Call<WriteResult> deleteTimeLine(@Field("board_id") String boardId);
 
 
-    @GET("/board/showAll/{my_user_id}")
+    @GET("/board/showAll/{my_user_id}")//O
     Call<TimelineResultResponse> getTimeLine(@Path("my_user_id") int myUserId, @Query("skip") int skip);
 
-    @GET("/board/show/{email}")
-    Call<TimelineResult> getUserWrite(@Path("email") String email);
+    @GET("/board/show/{email}") //O
+    Call<UserTimelineResponse> getUserTimeline(@Path("email") String email);
 
     @FormUrlEncoded
     @POST("/board/reply/write")

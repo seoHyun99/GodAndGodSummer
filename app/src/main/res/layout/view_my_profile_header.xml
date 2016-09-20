@@ -22,7 +22,17 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/myProfileUserPicture"
             android:layout_centerHorizontal="true"
-            android:text="GodNGod"
+            android:text="닉네임"
+            android:textColor="#000000"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/myProfileUserEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/myProfileUserName"
+            android:layout_centerHorizontal="true"
+            android:text="이메일"
             android:textColor="#000000"
             android:textSize="25dp"
             android:textStyle="bold" />
@@ -31,7 +41,7 @@
             android:id="@+id/myProfileComment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/myProfileUserName"
+            android:layout_below="@id/myProfileUserEmail"
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"

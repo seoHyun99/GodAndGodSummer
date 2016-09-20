@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.juntcompany.godandgodsummer.Data.MyProfile;
+import com.juntcompany.godandgodsummer.Data.User;
 import com.juntcompany.godandgodsummer.Main.MainActivity;
 import com.juntcompany.godandgodsummer.Manager.PropertyManager;
 import com.juntcompany.godandgodsummer.R;
@@ -34,10 +35,11 @@ public class MyProfileHeaderViewHolder extends RecyclerView.ViewHolder{
 
 
     ImageView imageProfilePicture;
-    TextView textUserName;
+    TextView textUserName, textUserEmail;
     TextView textUserComment;
 
     TextView textReligion, textFriendNum, textReligionArea, textCity;
+    Context mContext;
 
     public MyProfileHeaderViewHolder(View itemView) {
         super(itemView);
@@ -56,7 +58,7 @@ public class MyProfileHeaderViewHolder extends RecyclerView.ViewHolder{
                 }
     }
 });
-
+        textUserEmail = (TextView)itemView.findViewById(R.id.myProfileUserEmail);
         textUserName = (TextView)itemView.findViewById(R.id.myProfileUserName);
         textUserComment = (TextView)itemView.findViewById(R.id.myProfileComment);
 
@@ -76,12 +78,21 @@ public class MyProfileHeaderViewHolder extends RecyclerView.ViewHolder{
 
 
     }
-    Context mContext;
-    public void setData(MyProfile myProfile){
+    public void setData(User user){
 //        textUserName.setText(myProfi);
 //        if(!PropertyManager.getInstance().getProfileImage().equals("")){
 //            //PropertyManager 로 image를 한번이라도 저장했으면 걸림
 //            Glide.with(mContext).load(myProfile).into(imageProfilePicture);
 //        }
+//        Log.i("user", user.email +  user.userPhoto);
+//        Glide.with(mContext).load(user.userPhoto).into(imageProfilePicture);
+        textUserName.setText(user.name);
+        textUserEmail.setText(user.email);
+        textCity.setText(user.city);
+        textFriendNum.setText(""+user.friendNum);
+        textReligion.setText(user.religion);
+        textReligionArea.setText(user.religionArea);
+        textUserComment.setText(user.introduction);
+
     }
 }

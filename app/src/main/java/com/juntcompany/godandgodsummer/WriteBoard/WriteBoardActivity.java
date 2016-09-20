@@ -160,6 +160,8 @@ public class WriteBoardActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<WriteResult> call, Throwable t) {
 
+               Toast.makeText(getApplicationContext(), "게시글 작성을 실패했습니다. \n 네트워크 상태를 확인해주세요." , Toast.LENGTH_SHORT).show();
+
             }
         });
     }

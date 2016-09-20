@@ -8,7 +8,7 @@
     <ImageView
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:id="@+id/image_video_thumbnail"
+        android:id="@+id/image_reply_profile"
         android:src="@drawable/profile5"
         />
     <TextView
@@ -17,7 +17,7 @@
         android:layout_marginLeft="3dp"
         android:text="비디오이름"
         android:id="@+id/text_video_name"
-        android:layout_toRightOf="@+id/image_video_thumbnail"
+        android:layout_toRightOf="@+id/image_reply_profile"
         />
 
     <TextView
@@ -29,7 +29,7 @@
         android:layout_marginLeft="3dp"
         android:layout_marginBottom="3dp"
         android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@id/image_video_thumbnail"
+        android:layout_toRightOf="@id/image_reply_profile"
         />
 
 

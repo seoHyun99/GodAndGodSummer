@@ -13,18 +13,27 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
-import com.juntcompany.godandgodsummer.Data.Friend;
 import com.juntcompany.godandgodsummer.Data.Timeline;
+import com.juntcompany.godandgodsummer.Data.User;
+import com.juntcompany.godandgodsummer.DataStructure.UserSearchResponse;
+import com.juntcompany.godandgodsummer.DataStructure.UserTimelineResponse;
 import com.juntcompany.godandgodsummer.Dialog.BeNotFriendDialogFragment;
 import com.juntcompany.godandgodsummer.Dialog.MessageNotFragment;
 import com.juntcompany.godandgodsummer.Main.MainActivity;
 import com.juntcompany.godandgodsummer.R;
+import com.juntcompany.godandgodsummer.Util.Rest.ApiClient;
+import com.juntcompany.godandgodsummer.Util.Rest.ApiInterface;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FriendInfoFragment extends Fragment {
+public class FriendInfoFragment extends Fragment {  // 해당 유저 쓴 글과 유저 정보 보기
 
 
     public FriendInfoFragment() {
@@ -34,14 +43,16 @@ public class FriendInfoFragment extends Fragment {
 
     RecyclerView recyclerView;
     FriendInfoAdapter mAdapter;
+    public static final String FRIEND_INFO_MESSAGE = "friend_message";
     private static final String DIALOG = "dialog";
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_friend_info, container, false);
 
-        //       툴바 셋팅
+        /////////       툴바 셋팅
         Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
         MainActivity activity = (MainActivity) getActivity();
         activity.setSupportActionBar(toolbar);
@@ -57,6 +68,7 @@ public class FriendInfoFragment extends Fragment {
 
         //////////////툴바 세팅
 
+        ////////////////// 리사이클러뷰 세팅
         recyclerView = (RecyclerView)view.findViewById(R.id.recyclerView);
         mAdapter = new FriendInfoAdapter();
         mAdapter.setOnItemClickListener(new FriendInfoAdapter.OnAdapterItemClickListener() {
@@ -79,14 +91,20 @@ public class FriendInfoFragment extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
 
-        initData();
+        //////데이터 세팅
+
+        User user = (User)getArguments().getSerializable(FriendInfoFragment.FRIEND_INFO_MESSAGE);
+        Toast.makeText(getContext(), user.email, Toast.LENGTH_SHORT).show();
+        mAdapter.addHeader(user);
+        getTimelineByEmailNetwork(user.email); //네트워크
+//        initData();
 
         return view;
     }
 
     private void initData(){
-        Friend friend = new Friend();
-        mAdapter.addHeader(friend);
+//        Friend friend = new Friend();
+//        mAdapter.addHeader(friend);
         for(int i=0; i<3; i++){
             Timeline timeline = new Timeline();
             mAdapter.add(timeline);
@@ -108,4 +126,23 @@ public class FriendInfoFragment extends Fragment {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    private void getTimelineByEmailNetwork(String email){
+        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+        Call<UserTimelineResponse> call = apiInterface.getUserTimeline(email);
+        call.enqueue(new Callback<UserTimelineResponse>() {
+            @Override
+            public void onResponse(Call<UserTimelineResponse> call, Response<UserTimelineResponse> response) {
+                if(response.isSuccessful()){
+                    mAdapter.addAll(response.body().results);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UserTimelineResponse> call, Throwable t) {
+                Toast.makeText(getContext(), "네트워크 상태를 확인 부탁드립니다", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
 }
