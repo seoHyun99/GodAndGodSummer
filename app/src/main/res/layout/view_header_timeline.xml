@@ -9,11 +9,13 @@
         android:layout_margin="10dp"
         android:orientation="vertical">
 
-    <ImageView
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+    <com.mikhaellopez.circularimageview.CircularImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:id="@+id/profile_image"
         android:src="@drawable/profile1"
+
         />
 
     <TextView
@@ -24,12 +26,13 @@
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@+id/profile_image"
         android:text="무슨 이야기를 나누고 싶나요?"
-        android:textSize="16dp" />
+        android:textColor="@color/colorGreyText"
+        android:textSize="14dp" />
     </RelativeLayout>
     <View
         android:layout_width="fill_parent"
         android:layout_height="5dp"
-        android:background="#90909090"
+        android:background="@color/colorGreyText"
         android:layout_alignParentBottom="true"/>
 
 </TableLayout>

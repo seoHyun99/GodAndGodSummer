@@ -40,7 +40,7 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        ((NewsViewHolder)holder).setData();
+        ((NewsViewHolder)holder).setData(items.get(position));
     }
 
     @Override

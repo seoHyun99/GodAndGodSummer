@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.juntcompany.godandgodsummer.Data.User;
+import com.juntcompany.godandgodsummer.Dialog.BeNotFriendDialogFragment;
+import com.juntcompany.godandgodsummer.Dialog.ChangePasswordFragment;
 import com.juntcompany.godandgodsummer.Login.LoginActivity;
 import com.juntcompany.godandgodsummer.R;
 import com.juntcompany.godandgodsummer.Util.Rest.ApiClient;
@@ -31,6 +33,7 @@ public class SettingFragment extends Fragment {
         // Required empty public constructor
     }
 
+    private static final String DIALOG = "dialog";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -62,7 +65,8 @@ public class SettingFragment extends Fragment {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                ChangePasswordFragment df = new ChangePasswordFragment();
+                df.show(getFragmentManager(), DIALOG);
             }
         });
         btn =  (Button)view.findViewById(R.id.button_change_phone_num);

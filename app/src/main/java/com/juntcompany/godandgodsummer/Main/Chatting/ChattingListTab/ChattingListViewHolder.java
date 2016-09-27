@@ -37,7 +37,7 @@ public class ChattingListViewHolder extends RecyclerView.ViewHolder {
                 }
             }
         });
-        chatFriendPicture = (ImageView)itemView.findViewById(R.id.image_reply_profile);
+        chatFriendPicture = (ImageView)itemView.findViewById(R.id.image_video);
         chatFriendName = (TextView)itemView.findViewById(R.id.text_video_name);
         chatLastSpeak = (TextView)itemView.findViewById(R.id.text_last_speak);
         chatLastTime = (TextView)itemView.findViewById(R.id.text_last_time);

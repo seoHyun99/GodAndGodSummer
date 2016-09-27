@@ -33,6 +33,7 @@ public class BeNotFriendDialogFragment extends DialogFragment {
     }
     /////////////////다욜로그 버튼에 리스너 달기
 
+    //화면 타이틀 없애기
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

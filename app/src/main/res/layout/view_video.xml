@@ -1,37 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_margin="10dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginRight="10dp"
     android:layout_width="match_parent"
     android:layout_height="80dp">
 
-    <ImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:id="@+id/image_reply_profile"
+    <View
+        android:id="@+id/line"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/timeline_content"
+        android:layout_marginTop="5dp"
+        android:background="@color/colorGreySlash"
+        android:layout_marginBottom="3dp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/line">
+    <com.mikhaellopez.circularimageview.CircularImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="90dp"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+
+        android:id="@+id/image_video"
         android:src="@drawable/profile5"
         />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="3dp"
-        android:text="비디오이름"
-        android:id="@+id/text_video_name"
-        android:layout_toRightOf="@+id/image_reply_profile"
-        />
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/image_video">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:text="비디오이름"
+                    android:id="@+id/text_video_name"
+                    android:layout_toRightOf="@+id/image_video"
+                    />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/text_video_owner"
-        android:textColor="@color/colorPrimaryDark"
-        android:text="내가 제일 마지막 한말"
-        android:layout_marginLeft="3dp"
-        android:layout_marginBottom="3dp"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@id/image_reply_profile"
-        />
 
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/uploadDate"
+                        android:text="게시일"
+                        android:textSize="11dp"
+                        android:layout_marginLeft="14dp"
+                        />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                >
+                <RelativeLayout
+                    android:layout_width="230dp"
+                    android:layout_height="wrap_content">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/text_video_owner"
+                            android:textColor="@android:color/black"
+                            android:text="소유주"
+
+                            />
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:src="@drawable/eye"
+                        android:layout_toLeftOf="@+id/text_view_count"
+                        android:layout_marginRight="10dp"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/text_view_count"
+                        android:text="200"
+                        android:textSize="11dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
+                        />
+                </RelativeLayout>
+            </TableRow>
+        </TableLayout>
+    </RelativeLayout>
 
 
 </RelativeLayout>

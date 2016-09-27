@@ -27,7 +27,7 @@ public class WriteReplyViewHolder extends RecyclerView.ViewHolder {
         textReplyUserName = (TextView)itemView.findViewById(R.id.text_user_name);
         testReplyContent = (TextView)itemView.findViewById(R.id.text_reply_content);
         textReplyTime = (TextView)itemView.findViewById(R.id.text_reply_time);
-        imageReplyProfile = (ImageView) itemView.findViewById(R.id.image_reply_profile);
+        imageReplyProfile = (ImageView) itemView.findViewById(R.id.image_video);
 
 
     }

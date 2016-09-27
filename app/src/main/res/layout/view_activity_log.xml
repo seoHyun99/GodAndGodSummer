@@ -24,7 +24,7 @@
             android:layout_marginLeft="3dp"
             android:text="누구누구님이 회원님의 게시물을 좋아합니다"
             android:id="@+id/text_activity_name"
-            android:layout_toRightOf="@+id/image_reply_profile"
+            android:layout_toRightOf="@+id/image_video"
             />
         <TextView
             android:layout_width="wrap_content"
@@ -32,7 +32,7 @@
             android:layout_marginLeft="3dp"
             android:text="어쩌구저쩌구 활동기록 내용이 있을 예정이다."
             android:id="@+id/text_video_content"
-            android:layout_toRightOf="@+id/image_reply_profile"
+            android:layout_toRightOf="@+id/image_video"
             />
 
         <TextView

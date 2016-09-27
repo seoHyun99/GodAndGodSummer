@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -12,6 +14,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.juntcompany.godandgodsummer.Main.MainActivity;
 import com.juntcompany.godandgodsummer.R;
@@ -36,7 +40,7 @@ public class SetMyTargetFragment extends Fragment {
         Log.i("lifeFragment", "oncreatedView");
         View view = inflater.inflate(R.layout.fragment_set_my_target, container, false);
 
-//        툴바 세팅
+///////////////////        툴바 세팅
 
         Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
         MainActivity activity = (MainActivity) getActivity();
@@ -46,7 +50,7 @@ public class SetMyTargetFragment extends Fragment {
         actionBar.setDisplayShowTitleEnabled(false);
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeAsUpIndicator(R.drawable.button_back);
-//        actionBar.set
+/////////////////////        actionBar.set
         View viewToolbar = getActivity().getLayoutInflater().inflate(R.layout.toolbar_profile_check, null);
         Button btn = (Button)viewToolbar.findViewById(R.id.button_check);
         btn.setOnClickListener(new View.OnClickListener() {
@@ -58,10 +62,30 @@ public class SetMyTargetFragment extends Fragment {
         });
         actionBar.setCustomView(viewToolbar, new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, Gravity.CENTER));
 
-//        툴바 세팅
+//////////////////////////////////        툴바 세팅
+
+        final EditText editText = (EditText)view.findViewById(R.id.edit_faith_target);
+       editText.addTextChangedListener(new TextWatcher() {
+           @Override
+           public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+           }
+
+           @Override
+           public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+               Toast.makeText(getContext(), editText.getText().toString(), Toast.LENGTH_SHORT).show();
+           }
+
+           @Override
+           public void afterTextChanged(Editable editable) {
+
+           }
+       });
+
 
         return view;
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

@@ -101,12 +101,42 @@ public class VideoFragment extends Fragment {
     private static final String HEADER_TITLE= "전체 동영상";
     private void initData(){
 
-        for(int i=0; i<10; i++){
-            Video video = new Video();
-            video.videoName =  i + "번째 동영상";
-            video.videoOwner = i + "번째 주인";
-            mAdapter.add(video);
-        }
+//        for(int i=0; i<10; i++){
+//            Video video = new Video();
+//            video.videoName =  i + "번째 동영상";
+//            video.videoOwner = i + "번째 주인";
+//            mAdapter.add(video);
+//        }
+        Video video1 = new Video();
+        video1.videoName = "아산교구 성령대회";
+        video1.videoOwner = "이성진";
+        video1.videoUpdateDate = "9월 10일";
+        video1.videoThumbNail = "https://img.youtube.com/vi/p_oW4B4qMyY/0.jpg";
+        mAdapter.add(video1);
+        Video video2 = new Video();
+        video2.videoName = "마산교구";
+        video2.videoOwner = "마왕";
+        video2.videoUpdateDate = "8월 20일";
+        video2.videoThumbNail = "https://img.youtube.com/vi/gB-MiPm0hnY/0.jpg";
+        mAdapter.add(video2);
+        Video video3 = new Video();
+        video3.videoName = "법륜스님 집회";
+        video3.videoOwner = "법륜";
+        video3.videoUpdateDate = "8월 10일";
+        video3.videoThumbNail = "https://img.youtube.com/vi/fSNjgSebht8/0.jpg";
+        mAdapter.add(video3);
+        Video video4 = new Video();
+        video4.videoName = "혜민스님 집회";
+        video4.videoOwner = "혜민스님";
+        video4.videoUpdateDate = "8월 3일";
+        video4.videoThumbNail = "https://img.youtube.com/vi/T7lR1_th1Qo/0.jpg";
+        mAdapter.add(video4);
+        Video video5 = new Video();
+        video5.videoName = "불국사 집회";
+        video5.videoOwner = "스님";
+        video5.videoUpdateDate = "9월 5일";
+        video5.videoThumbNail = "https://img.youtube.com/vi/hgQJTzNqqT0/0.jpg";
+        mAdapter.add(video5);
     }
 
 //    @Override

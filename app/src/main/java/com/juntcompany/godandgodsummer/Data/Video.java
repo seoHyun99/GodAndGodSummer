@@ -7,4 +7,5 @@ public class Video {
     public String videoThumbNail;
     public String videoName;
     public String videoOwner;
+    public String videoUpdateDate;
 }

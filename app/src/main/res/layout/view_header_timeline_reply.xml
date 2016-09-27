@@ -37,7 +37,7 @@
                 android:layout_height="17dp"
                 android:layout_alignParentRight="true"
                 android:layout_marginLeft="10dp"
-                android:src="@drawable/timeline_heart_checked" />
+                android:src="@drawable/heart" />
             <TextView
                 android:id="@+id/timeline_user_like_num"
                 android:layout_width="wrap_content"

@@ -1,10 +1,12 @@
 package com.juntcompany.godandgodsummer.Main.Video;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.juntcompany.godandgodsummer.Data.Video;
 import com.juntcompany.godandgodsummer.R;
 
@@ -25,11 +27,12 @@ public class VideoViewHolder extends RecyclerView.ViewHolder {
 
 
     ImageView videoThumbnail;
-    TextView videoName;
+    TextView videoName,videoUpdateDate;
     TextView videoOwner;
-
+    Context mContext;
     public VideoViewHolder(View itemView) {
         super(itemView);
+        mContext = itemView.getContext();
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -38,13 +41,16 @@ public class VideoViewHolder extends RecyclerView.ViewHolder {
                 }
             }
         });
-        videoThumbnail = (ImageView)itemView.findViewById(R.id.image_reply_profile);
+        videoThumbnail = (ImageView)itemView.findViewById(R.id.image_video);
+        videoUpdateDate = (TextView)itemView.findViewById(R.id.uploadDate);
         videoName =(TextView)itemView.findViewById(R.id.text_video_name);
         videoOwner = (TextView)itemView.findViewById(R.id.text_video_owner);
     }
 
     public void setData(Video video){
-        videoThumbnail.setImageResource(R.drawable.profile6);
+//        videoThumbnail.setImageResource(R.drawable.profile6);
+        Glide.with(mContext).load(video.videoThumbNail).into(videoThumbnail);
+        videoUpdateDate.setText(video.videoUpdateDate);
         videoName.setText(video.videoName);
         videoOwner.setText(video.videoOwner);
     }

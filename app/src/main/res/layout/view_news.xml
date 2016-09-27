@@ -15,16 +15,29 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/text_news_name"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_marginBottom="5dp"
         android:text="주최 행사 이름"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/text_news_content"
+        android:layout_marginLeft="15dp"
+        android:text="초대 행사 이름"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_news_content_second"
+        android:layout_marginLeft="15dp"
         android:text="초대 행사 이름"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/text_news_time"
+        android:layout_marginLeft="15dp"
         android:text="초대 행사 내용 및 시간"/>
 
     </TableLayout>

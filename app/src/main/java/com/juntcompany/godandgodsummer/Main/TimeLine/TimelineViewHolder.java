@@ -105,13 +105,14 @@ public class TimelineViewHolder extends RecyclerView.ViewHolder{
 
 //    실질적으로 데이터가 들어가는 부분
     public void setData(Timeline timeline){
-        if(!TextUtils.isEmpty(timeline.userPhoto)){
-            Log.i("userPhoto", "" + (timeline.userPhoto == null));
-            Glide.with(mContext).load(timeline.userPhoto).into(tlUserPicture);
-        }else {
-            Log.i("userPhoto", "" + (timeline.userPhoto == null));
-            tlUserPicture.setImageResource(R.drawable.default_me);
-        }
+//        if(!TextUtils.isEmpty(timeline.userPhoto)){
+//            Log.i("userPhoto", "" + (timeline.userPhoto == null));
+//            Glide.with(mContext).load(timeline.userPhoto).into(tlUserPicture);
+//        }else {
+//            Log.i("userPhoto", "" + (timeline.userPhoto == null));
+//            tlUserPicture.setImageResource(R.drawable.default_me);
+//        }
+        tlUserPicture.setImageResource(R.drawable.profile1);
         Glide.with(mContext).load(timeline.photo);
         tlUserName.setText(timeline.username);
         tlLikeCount.setText(""+timeline.likeCount);

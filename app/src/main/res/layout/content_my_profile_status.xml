@@ -20,7 +20,7 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="10dp"
                 android:layout_alignParentRight="true"
-                android:background="@drawable/calendar_settings" />
+                android:background="@drawable/setting" />
 
             <Button
                 android:id="@+id/button_last_target"
@@ -30,7 +30,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_toLeftOf="@+id/button_target_settings"
                 android:layout_toStartOf="@+id/button_target_settings"
-                android:background="@drawable/calendar" />
+                android:background="@drawable/calandar" />
         </RelativeLayout>
 
         <TextView

@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ScrollView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -62,7 +63,8 @@ public class WriteBoardActivity extends AppCompatActivity {
 
 
         final ImageView imageView = (ImageView)findViewById(R.id.imageView);
-
+        TextView textName = (TextView)findViewById(R.id.text_name);
+        textName.setText(PropertyManager.getInstance().getUserName());
         final EditText editContent = (EditText)findViewById(R.id.edit_content);
         editContent.setOnClickListener(new View.OnClickListener() {
             @Override
