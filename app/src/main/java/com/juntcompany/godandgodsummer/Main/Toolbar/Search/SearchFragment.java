@@ -18,7 +18,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.juntcompany.godandgodsummer.Data.User;
-import com.juntcompany.godandgodsummer.DataStructure.UserSearchResponse;
+import com.juntcompany.godandgodsummer.Data.DataStructure.UserSearchResponse;
 import com.juntcompany.godandgodsummer.Main.FriendInfo.FriendInfoFragment;
 import com.juntcompany.godandgodsummer.Main.MainActivity;
 import com.juntcompany.godandgodsummer.R;

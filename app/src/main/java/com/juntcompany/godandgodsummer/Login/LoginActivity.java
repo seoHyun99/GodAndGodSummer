@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.juntcompany.godandgodsummer.Data.User;
-import com.juntcompany.godandgodsummer.DataStructure.UserInfoResponse;
+import com.juntcompany.godandgodsummer.Data.DataStructure.UserInfoResponse;
 import com.juntcompany.godandgodsummer.Login.SignIn.SignInActivity;
 import com.juntcompany.godandgodsummer.Main.MainActivity;
 import com.juntcompany.godandgodsummer.Manager.PropertyManager;

@@ -1,4 +1,4 @@
-package com.juntcompany.godandgodsummer.DataStructure;
+package com.juntcompany.godandgodsummer.Data.DataStructure;
 
 import com.google.gson.annotations.SerializedName;
 import com.juntcompany.godandgodsummer.Data.User;

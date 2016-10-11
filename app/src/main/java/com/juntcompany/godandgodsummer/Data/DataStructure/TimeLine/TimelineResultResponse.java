@@ -1,4 +1,4 @@
-package com.juntcompany.godandgodsummer.DataStructure.TimeLine;
+package com.juntcompany.godandgodsummer.Data.DataStructure.TimeLine;
 
 import com.google.gson.annotations.SerializedName;
 import com.juntcompany.godandgodsummer.Data.Timeline;

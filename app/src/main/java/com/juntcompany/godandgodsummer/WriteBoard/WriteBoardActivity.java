@@ -22,7 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.juntcompany.godandgodsummer.DataStructure.TimeLine.WriteResult;
+import com.juntcompany.godandgodsummer.Data.DataStructure.TimeLine.WriteResult;
 import com.juntcompany.godandgodsummer.Dialog.DeleteDialogFragment;
 import com.juntcompany.godandgodsummer.Manager.PropertyManager;
 import com.juntcompany.godandgodsummer.R;

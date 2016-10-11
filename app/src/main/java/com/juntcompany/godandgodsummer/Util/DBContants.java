@@ -23,7 +23,13 @@ public class DBContants {
         public static final String COLUMN_CREATED_DATE = "created";
     }
 
-
+    public interface SearchFriendTable extends BaseColumns{
+        public static final String TABLE_NAME = "searchFriendTable";
+        public static final String COLUMN_USER_NAME = "user_name";
+        public static final String COLUMN_EMAIL= "user_email";
+        public static final String COLUMN_USER_ID = "user_id";
+        public static final String COLUMN_CREATED_DATE = "created";
+    }
 
     ///db 컬럼 정의 하는 곳
 }

@@ -17,8 +17,7 @@ import android.widget.Toast;
 
 import com.juntcompany.godandgodsummer.Data.Timeline;
 import com.juntcompany.godandgodsummer.Data.User;
-import com.juntcompany.godandgodsummer.DataStructure.UserSearchResponse;
-import com.juntcompany.godandgodsummer.DataStructure.UserTimelineResponse;
+import com.juntcompany.godandgodsummer.Data.DataStructure.UserTimelineResponse;
 import com.juntcompany.godandgodsummer.Dialog.BeNotFriendDialogFragment;
 import com.juntcompany.godandgodsummer.Dialog.MessageNotFragment;
 import com.juntcompany.godandgodsummer.Main.MainActivity;

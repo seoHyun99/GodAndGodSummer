@@ -1,8 +1,7 @@
-package com.juntcompany.godandgodsummer.DataStructure.TimeLine;
+package com.juntcompany.godandgodsummer.Data.DataStructure.TimeLine;
 
 import com.google.gson.annotations.SerializedName;
 import com.juntcompany.godandgodsummer.Data.Timeline;
-import com.juntcompany.godandgodsummer.DataStructure.TimeLine.WriteResult;
 
 /**
  * Created by EOM on 2016-08-04.

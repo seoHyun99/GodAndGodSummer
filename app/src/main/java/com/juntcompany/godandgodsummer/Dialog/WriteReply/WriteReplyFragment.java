@@ -16,17 +16,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.android.gms.common.api.Api;
 import com.juntcompany.godandgodsummer.Data.Reply;
 import com.juntcompany.godandgodsummer.Data.Timeline;
-import com.juntcompany.godandgodsummer.DataStructure.TimeLine.WriteResult;
-import com.juntcompany.godandgodsummer.Main.TimeLine.TimelineFragment;
+import com.juntcompany.godandgodsummer.Data.DataStructure.TimeLine.WriteResult;
 import com.juntcompany.godandgodsummer.Manager.PropertyManager;
 import com.juntcompany.godandgodsummer.R;
 import com.juntcompany.godandgodsummer.Util.Rest.ApiClient;
 import com.juntcompany.godandgodsummer.Util.Rest.ApiInterface;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;

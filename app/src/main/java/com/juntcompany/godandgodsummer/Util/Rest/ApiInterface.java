@@ -2,17 +2,17 @@ package com.juntcompany.godandgodsummer.Util.Rest;
 
 import com.juntcompany.godandgodsummer.Data.Timeline;
 import com.juntcompany.godandgodsummer.Data.User;
-import com.juntcompany.godandgodsummer.DataStructure.ActivityResult;
-import com.juntcompany.godandgodsummer.DataStructure.FriendResult;
-import com.juntcompany.godandgodsummer.DataStructure.LikeResult;
-import com.juntcompany.godandgodsummer.DataStructure.ReplyResult;
-import com.juntcompany.godandgodsummer.DataStructure.ReportResult;
-import com.juntcompany.godandgodsummer.DataStructure.TimeLine.TimelineResultResponse;
-import com.juntcompany.godandgodsummer.DataStructure.UserInfoResponse;
-import com.juntcompany.godandgodsummer.DataStructure.TimeLine.WriteResult;
-import com.juntcompany.godandgodsummer.DataStructure.UserSearchResponse;
-import com.juntcompany.godandgodsummer.DataStructure.UserTimelineResponse;
-import com.juntcompany.godandgodsummer.DataStructure.YoutubeResult;
+import com.juntcompany.godandgodsummer.Data.DataStructure.ActivityResult;
+import com.juntcompany.godandgodsummer.Data.DataStructure.Friend.FriendResponse;
+import com.juntcompany.godandgodsummer.Data.DataStructure.LikeResult;
+import com.juntcompany.godandgodsummer.Data.DataStructure.ReplyResult;
+import com.juntcompany.godandgodsummer.Data.DataStructure.ReportResult;
+import com.juntcompany.godandgodsummer.Data.DataStructure.TimeLine.TimelineResultResponse;
+import com.juntcompany.godandgodsummer.Data.DataStructure.UserInfoResponse;
+import com.juntcompany.godandgodsummer.Data.DataStructure.TimeLine.WriteResult;
+import com.juntcompany.godandgodsummer.Data.DataStructure.UserSearchResponse;
+import com.juntcompany.godandgodsummer.Data.DataStructure.UserTimelineResponse;
+import com.juntcompany.godandgodsummer.Data.DataStructure.YoutubeResult;
 
 import java.io.File;
 
@@ -101,28 +101,28 @@ public interface ApiInterface {
 
     @FormUrlEncoded
     @POST("/friend/request")
-    Call<FriendResult> friendRequest(@Field("my_user_id") int myUserId, @Field("other_user_id") int otherUserId);
+    Call<FriendResponse> friendRequest(@Field("my_user_id") int myUserId, @Field("other_user_id") int otherUserId);
 
     @FormUrlEncoded
     @POST("/friend/accept")
-    Call<FriendResult> friendAccept(@Field("my_user_id") int myUserId, @Field("other_user_id") int otherUserId);
+    Call<FriendResponse> friendAccept(@Field("my_user_id") int myUserId, @Field("other_user_id") int otherUserId);
 
     @FormUrlEncoded
     @POST("/friend/decline")
-    Call<FriendResult> friendDecline(@Field("my_user_id") int myUserId, @Field("other_user_id") int otherUserId);
+    Call<FriendResponse> friendDecline(@Field("my_user_id") int myUserId, @Field("other_user_id") int otherUserId);
 
     @GET("/friend/list/{my_user_id}")
-    Call<FriendResult> friendList(@Path("my_user_id") int myUserId);
+    Call<FriendResponse> friendList(@Path("my_user_id") int myUserId);
 
     @GET("/friend/pending/{my_user_id}")
-    Call<FriendResult> friendPendingList(@Path("my_user_id") int myUserId);
+    Call<FriendResponse> friendPendingList(@Path("my_user_id") int myUserId);
 
     @GET("/friend/relation/{my_user_id}/{other_user_id}")
-    Call<FriendResult> friendRelation(@Path("my_user_id") int myUserId, @Path("other_user_id") int otherUserId);
+    Call<FriendResponse> friendRelation(@Path("my_user_id") int myUserId, @Path("other_user_id") int otherUserId);
 
     @FormUrlEncoded
     @POST("/friend/block")
-    Call<FriendResult> friendBlock(@Field("my_user_id") int myUserId, @Field("other_user_id") int otherUserId);
+    Call<FriendResponse> friendBlock(@Field("my_user_id") int myUserId, @Field("other_user_id") int otherUserId);
 
     @GET("/activity/show/{email}")
     Call<ActivityResult> showActivity(@Path("email") String email);

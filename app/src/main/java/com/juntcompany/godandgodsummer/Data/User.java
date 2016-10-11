@@ -1,7 +1,7 @@
 package com.juntcompany.godandgodsummer.Data;
 
 import com.google.gson.annotations.SerializedName;
-import com.juntcompany.godandgodsummer.DataStructure.UserResult;
+import com.juntcompany.godandgodsummer.Data.DataStructure.UserResult;
 
 import java.io.Serializable;
 

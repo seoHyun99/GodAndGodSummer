@@ -1,8 +1,7 @@
-package com.juntcompany.godandgodsummer.DataStructure;
+package com.juntcompany.godandgodsummer.Data.DataStructure;
 
 import com.google.gson.annotations.SerializedName;
 import com.juntcompany.godandgodsummer.Data.Timeline;
-import com.juntcompany.godandgodsummer.DataStructure.TimeLine.TimelineResult;
 
 import java.util.List;
 

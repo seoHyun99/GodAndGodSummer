@@ -15,7 +15,7 @@ import android.widget.Toast;
 import com.juntcompany.godandgodsummer.Data.MyProfile;
 import com.juntcompany.godandgodsummer.Data.Timeline;
 import com.juntcompany.godandgodsummer.Data.User;
-import com.juntcompany.godandgodsummer.DataStructure.UserInfoResponse;
+import com.juntcompany.godandgodsummer.Data.DataStructure.UserInfoResponse;
 import com.juntcompany.godandgodsummer.Dialog.PictureSettingDialogFragment;
 import com.juntcompany.godandgodsummer.Manager.PropertyManager;
 import com.juntcompany.godandgodsummer.R;

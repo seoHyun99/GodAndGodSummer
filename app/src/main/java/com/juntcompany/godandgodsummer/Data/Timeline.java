@@ -1,10 +1,6 @@
 package com.juntcompany.godandgodsummer.Data;
 
-import android.graphics.drawable.Drawable;
-
 import com.google.gson.annotations.SerializedName;
-import com.juntcompany.godandgodsummer.DataStructure.TimeLine.WriteResult;
-import com.juntcompany.godandgodsummer.DataStructure.UserResult;
 
 import java.io.Serializable;
 import java.util.List;
