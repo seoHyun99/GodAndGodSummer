@@ -29,8 +29,8 @@
                 android:layout_marginTop="10dp"
                 android:layout_alignParentTop="true"
                 android:layout_toLeftOf="@+id/button_target_settings"
-                android:layout_toStartOf="@+id/button_target_settings"
-                android:background="@drawable/calandar" />
+                android:layout_toStartOf="@+id/button_target_settings"/>
+                <!-- android:background="@drawable/calandar" /> -->
         </RelativeLayout>
 
         <TextView

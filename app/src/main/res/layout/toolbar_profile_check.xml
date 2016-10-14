@@ -1,29 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <TextView
+        android:id="@+id/text_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/text_title"
-        android:text="개인목표설정"
         android:layout_centerVertical="true"
+        android:text="개인목표설정"
         android:textColor="@color/colorWhite"
-        android:textSize="@dimen/text_toolbar_size"
-        />
+        android:textSize="@dimen/text_toolbar_size" />
 
     <Button
+        android:id="@+id/button_check"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="체크 버튼"
-        android:id="@+id/button_check"
-        android:background="@drawable/ic_check"
-        android:textColor="@color/colorWhite"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        />
-
-
+        android:text="체크 버튼"
+        android:textColor="@color/colorWhite" />
+    <!-- android:background="@drawable/ic_check"
+    /> -->
 
 
 </RelativeLayout>
