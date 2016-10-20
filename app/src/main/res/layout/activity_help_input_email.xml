@@ -30,7 +30,7 @@
         android:layout_below="@+id/inputEmail"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:text="@string/WhenPWResetORLogin"
+        android:text="로그인할 때 또는 비밀번호를 재설정 할 때"
         android:textSize="18sp" />
 
     <TextView
@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/whenPWResetORLogin"
         android:layout_centerHorizontal="true"
-        android:text="@string/useEmail"
+        android:text="이메일 주소를 사용합니다."
         android:textSize="18sp" />
 
     <EditText
@@ -51,6 +51,6 @@
         android:inputType="textEmailAddress"
         android:layout_marginTop="30dp"
         android:gravity="center"
-        android:hint="@string/inputEmail" />
+        android:hint="이메일 주소를 입력해주세요." />
 
 </RelativeLayout>
