@@ -3,8 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.godandgod_example.LoginHelp_FindEmail">
+    android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/toolbar"
@@ -19,7 +18,7 @@
         android:layout_below="@+id/toolbar"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="82dp"
-        android:text="@string/inputEmail"
+        android:text="이메일 주소를 입력해주세요."
         android:textSize="22sp"
         android:textStyle="bold" />
 

@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.juntcompany.godandgodsummer.Login.Help.HelpFindPhoneActivity;
 import com.juntcompany.godandgodsummer.R;
 
 
@@ -31,9 +32,9 @@ public class NoMatchEmailDialogFragment extends DialogFragment {
         btn_research.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(view.getContext(), LoginHelp_FindEmail.class);
+                Intent i = new Intent(view.getContext(), HelpFindPhoneActivity.class);
                 startActivity(i);
-                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK); // Todo: 확인해보기
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 dismiss();
             }
         });

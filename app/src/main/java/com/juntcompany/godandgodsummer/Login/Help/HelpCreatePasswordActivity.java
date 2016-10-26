@@ -13,6 +13,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.juntcompany.godandgodsummer.R;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -27,7 +29,7 @@ public class HelpCreatePasswordActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_new_password);
+        setContentView(R.layout.activity_help_create_new_password);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -37,8 +39,8 @@ public class HelpCreatePasswordActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeAsUpIndicator(R.drawable.button_back);
 
-        View viewToolbar = getLayoutInflater().inflate(R.layout.toolbar_login_help, null);
-        TextView textTitle = (TextView) viewToolbar.findViewById(R.id.toolbar_text);
+        View viewToolbar = getLayoutInflater().inflate(R.layout.toolbar_only_title, null);
+        TextView textTitle = (TextView) viewToolbar.findViewById(R.id.text_toolbar_title);
         textTitle.setText("계정 비밀번호");
 
         complete = (Button) findViewById(R.id.complete);

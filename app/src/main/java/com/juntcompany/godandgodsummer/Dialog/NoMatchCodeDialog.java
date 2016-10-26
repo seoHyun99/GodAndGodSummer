@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.juntcompany.godandgodsummer.R;
+
 /**
  * Created by 이서현 on 2016-09-29.
  */
@@ -49,12 +51,16 @@ public class NoMatchCodeDialog extends DialogFragment {
         btn_revest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) { // 다이얼로그만 끄기
-                ((LoginHelp_confirm_account) LoginHelp_confirm_account.mContext).sendCodeToUser();
+                sendCodeToUser();
                 dismiss();
             }
         });
 
         return view;
+    }
+
+    private void sendCodeToUser() {
+        //Todo : 사용자에게 인증 코드 보내주는 부분.
     }
 
 }

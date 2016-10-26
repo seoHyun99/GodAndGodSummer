@@ -15,6 +15,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.juntcompany.godandgodsummer.Dialog.NoMatchCodeDialog;
+import com.juntcompany.godandgodsummer.R;
+
 
 public class HelpConfirmAccountActivity extends AppCompatActivity {
 
@@ -27,8 +30,7 @@ public class HelpConfirmAccountActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_confirm_account);
-        mContext = this;
+        setContentView(R.layout.activity_help_confirm_account);
 
         final String code = "1234"; //임시 데이터
 
@@ -47,8 +49,8 @@ public class HelpConfirmAccountActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeAsUpIndicator(R.drawable.button_back);
 
-        View viewToolbar = getLayoutInflater().inflate(R.layout.toolbar_login_help_2, null);
-        TextView textTitle = (TextView) viewToolbar.findViewById(R.id.toolbar_text);
+        View viewToolbar = getLayoutInflater().inflate(R.layout.toolbar_only_title, null);
+        TextView textTitle = (TextView) viewToolbar.findViewById(R.id.text_toolbar_title);
         textTitle.setText("계정 인증");
 
         actionBar.setCustomView(viewToolbar, new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, Gravity.CENTER));
@@ -105,7 +107,7 @@ public class HelpConfirmAccountActivity extends AppCompatActivity {
         sendCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                goActivity(LoginHelp_FindPhone.class);
+                goActivity(HelpFindPhoneActivity.class);
             }
         });
     }
@@ -142,7 +144,7 @@ public class HelpConfirmAccountActivity extends AppCompatActivity {
         finish();
     }
 
-    public void sendCodeToUser() {
+    private void sendCodeToUser() {
         //Todo : 사용자에게 인증 코드 보내주는 부분.
     }
 }
