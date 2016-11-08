@@ -39,6 +39,14 @@
         <activity android:name=".MakeGroup.MakeGroupActivity" />
         <activity android:name=".Util.YoutubeActivity" />
         <activity android:name=".Setting.GroupSettingActivity"></activity>
+
+        <!-- 추가된 부분입니다. -->
+        <activity android:name=".Login.Help.HelpActivity"/>
+        <activity android:name=".Login.Help.HelpConfirmAccountActivity"/>
+        <activity android:name=".Login.Help.HelpCreatePasswordActivity"/>
+        <activity android:name=".Login.Help.HelpFindEmailActivity"/>
+        <activity android:name=".Login.Help.HelpFindPhoneActivity"/>
+
     </application>
 
 </manifest>

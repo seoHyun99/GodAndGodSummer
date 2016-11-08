@@ -21,9 +21,8 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginTop="8dp"
+            android:paddingLeft="8dp"
+            android:paddingTop="8dp"
             android:text="비밀번호 재설정"
             android:textColor="@color/colorBlack"
             android:textSize="22sp"
@@ -31,7 +30,8 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="2dp"/>
+            android:layout_height="2dp"
+            android:background="#999999" />
 
         <TextView
             android:id="@+id/findEmail"
@@ -39,14 +39,15 @@
             android:layout_height="wrap_content"
             android:clickable="true"
             android:paddingBottom="8dp"
-            android:paddingRight="22dp"
+            android:paddingLeft="12dp"
             android:paddingTop="8dp"
             android:text="이메일 주소로 찾기"
             android:textSize="20sp" />
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp" />
+            android:layout_height="1dp"
+            android:background="#999999" />
 
         <TextView
             android:id="@+id/findPhoneNumber"
@@ -54,14 +55,15 @@
             android:layout_height="wrap_content"
             android:clickable="true"
             android:paddingBottom="8dp"
-            android:paddingRight="22dp"
+            android:paddingLeft="12dp"
             android:paddingTop="8dp"
             android:text="휴대폰 번호로 찾기"
             android:textSize="20sp" />
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="2dp" />
+            android:layout_height="2dp"
+            android:background="#999999" />
     </LinearLayout>
 
     <LinearLayout
@@ -73,9 +75,9 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="2dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginTop="10dp"
+            android:paddingBottom="2dp"
+            android:paddingLeft="8dp"
+            android:paddingTop="10dp"
             android:text="고객 센터"
             android:textColor="@color/colorBlack"
             android:textSize="22sp"
@@ -83,7 +85,8 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="2dp" />
+            android:layout_height="2dp"
+            android:background="#999999" />
 
         <TextView
             android:id="@+id/customerCenter"
@@ -91,14 +94,15 @@
             android:layout_height="wrap_content"
             android:clickable="true"
             android:paddingBottom="8dp"
-            android:paddingRight="22dp"
+            android:paddingLeft="12dp"
             android:paddingTop="8dp"
             android:text="GoD 고객 센터"
             android:textSize="20sp" />
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"/>
+            android:layout_height="1dp"
+            android:background="#999999" />
 
     </LinearLayout>
 </LinearLayout>

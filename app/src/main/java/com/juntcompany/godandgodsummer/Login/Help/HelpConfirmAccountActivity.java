@@ -1,6 +1,5 @@
 package com.juntcompany.godandgodsummer.Login.Help;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -21,7 +20,7 @@ import com.juntcompany.godandgodsummer.R;
 
 public class HelpConfirmAccountActivity extends AppCompatActivity {
 
-    public static Context mContext;
+    public static String data;
 
     TextView sendMSG, userInputData;
     Button sendCode;
@@ -58,7 +57,7 @@ public class HelpConfirmAccountActivity extends AppCompatActivity {
         //findEmail, findPhone에서 인텐트 값을 받아옴, email:1, phone:2
         Intent intent = getIntent();
         index = intent.getIntExtra("index", 0);
-        String data = intent.getStringExtra("data");
+        data = intent.getStringExtra("data");
 
         //index값 구분.
         switch (index) {

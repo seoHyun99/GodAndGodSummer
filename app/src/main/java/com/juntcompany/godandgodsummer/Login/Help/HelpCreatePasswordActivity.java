@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.juntcompany.godandgodsummer.Login.LoginActivity;
 import com.juntcompany.godandgodsummer.R;
 
 import java.util.regex.Matcher;
@@ -60,7 +61,10 @@ public class HelpCreatePasswordActivity extends AppCompatActivity {
                 if (!Passwordvalidate(inputPassWord.getText().toString())) {
                     Toast.makeText(getApplicationContext(), "비밀번호를 다시 입력해주세요.", Toast.LENGTH_SHORT).show();
                 } else {
-                    //Todo: 로그인 첫 화면으로 이동.
+                    Intent i = new Intent(view.getContext(), LoginActivity.class);
+                    startActivity(i);
+                    finish();
+                    //Todo: 사용자 계정의 비밀번호 업데이트 하기.
                 }
             }
         });
