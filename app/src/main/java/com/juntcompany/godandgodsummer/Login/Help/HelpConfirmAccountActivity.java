@@ -29,7 +29,7 @@ public class HelpConfirmAccountActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_help_confirm_account);
+        setContentView(R.layout.fragment_help_confirm_account);
 
         final String code = "1234"; //임시 데이터
 

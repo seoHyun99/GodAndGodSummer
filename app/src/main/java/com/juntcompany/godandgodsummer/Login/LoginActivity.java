@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.juntcompany.godandgodsummer.Data.User;
 import com.juntcompany.godandgodsummer.Data.DataStructure.UserInfoResponse;
+import com.juntcompany.godandgodsummer.Login.Help.Help1MainFragment;
 import com.juntcompany.godandgodsummer.Login.Help.HelpActivity;
 import com.juntcompany.godandgodsummer.Login.SignIn.SignInActivity;
 import com.juntcompany.godandgodsummer.Main.MainActivity;
@@ -52,12 +53,11 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), SignInActivity.class);
-
                 startActivity(intent);
             }
         });
 
-        btn = (Button) findViewById(R.id.loginHelp);
+        btn = (Button) findViewById(R.id.button_help);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

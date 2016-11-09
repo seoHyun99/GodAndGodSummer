@@ -30,7 +30,7 @@ public class HelpCreatePasswordActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_help_create_new_password);
+        setContentView(R.layout.fragment_help_create_password);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -51,7 +51,7 @@ public class HelpCreatePasswordActivity extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                goActivity(HelpActivity.class);
+                goActivity(Help1MainFragment.class);
             }
         });
 

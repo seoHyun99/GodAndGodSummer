@@ -50,9 +50,9 @@ public class SignInActivity extends AppCompatActivity {
 
     public void callSignUpInfo(User user){
         Toast.makeText(getApplicationContext(), "message" + user, Toast.LENGTH_SHORT).show();
-        Log.i("activity user", user.phoneNumber +" : " + user.birthDay);
+        Log.i("activity_help user", user.phoneNumber +" : " + user.birthDay);
         this.user = user;
-        Log.i("activity user", this.user.phoneNumber +" : " + this.user.birthDay);
+        Log.i("activity_help user", this.user.phoneNumber +" : " + this.user.birthDay);
     }
 
     public void callSignUpLast(User user){ //마지막 signin11comfirm 프래그먼트까지 다 돌고 마칠때 호출하는 메소드
