@@ -31,7 +31,7 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
 
-                if(false/*PropertyManager.getInstance().getUserEmail()!=null&& !PropertyManager.getInstance().getUserEmail().equals("")*/) { // 로컬에 아이디가 있으면
+                if(PropertyManager.getInstance().getUserEmail()!=null&& !PropertyManager.getInstance().getUserEmail().equals("")) { // 로컬에 아이디가 있으면
                     ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
                     String userEmail = PropertyManager.getInstance().getUserEmail();
                     String password= PropertyManager.getInstance().getUserPassword();

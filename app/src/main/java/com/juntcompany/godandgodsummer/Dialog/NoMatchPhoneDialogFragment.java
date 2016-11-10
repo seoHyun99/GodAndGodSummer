@@ -1,6 +1,5 @@
 package com.juntcompany.godandgodsummer.Dialog;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
@@ -9,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.juntcompany.godandgodsummer.Login.Help.HelpFindPhoneActivity;
 import com.juntcompany.godandgodsummer.R;
 
 
@@ -36,9 +34,6 @@ public class NoMatchPhoneDialogFragment extends DialogFragment {
         btn_reserch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(view.getContext(), HelpFindPhoneActivity.class);
-                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK); //Todo: 확인해보기.
-                startActivity(i);
                 dismiss();
             }
         });
